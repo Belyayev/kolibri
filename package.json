@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "next",
-    "build": "npm run build --legacy-peer-deps",
+    "build": "npm run build --force",
     "start": "next start"
   },
   "keywords": [],
