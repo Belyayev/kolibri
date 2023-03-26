@@ -11,9 +11,9 @@ const options = {
   providers: [
     GitHubProvider({
       clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.NEXT_PUBLIC_SECRET,
+      clientSecret: process.env.GITHUB_SECRET,
     }),
   ],
   adapter: PrismaAdapter(prisma),
-  secret: process.env.SECRET,
+  secret: process.env.NEXT_PUBLIC_SECRET,
 };
