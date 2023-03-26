@@ -6,17 +6,16 @@ import prisma from "../lib/prisma";
 import Header from "./header";
 
 export const getStaticProps: GetStaticProps = async () => {
-  // const feed = await prisma.post.findMany({
-  //   where: { published: true },
-  //   include: {
-  //     author: {
-  //       select: { name: true },
-  //     },
-  //   },
-  // });
+  const feed = await prisma.post.findMany({
+    where: { published: true },
+    include: {
+      author: {
+        select: { name: true },
+      },
+    },
+  });
   return {
-    // props: { feed },
-    props: {},
+    props: { feed },
     revalidate: 10,
   };
 };
