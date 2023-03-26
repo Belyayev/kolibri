@@ -12,21 +12,21 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
     return { props: { drafts: [] } };
   }
 
-//   const drafts = await prisma.post.findMany({
-//     where: {
-//       author: { email: session.user.email },
-//       published: false,
-//     },
-//     include: {
-//       author: {
-//         select: { name: true },
-//       },
-//     },
-//   });
-//   return {
-//     props: { drafts },
-//   };
-// };
+  const drafts = await prisma.post.findMany({
+    where: {
+      author: { email: session.user.email },
+      published: false,
+    },
+    include: {
+      author: {
+        select: { name: true },
+      },
+    },
+  });
+  return {
+    props: { drafts },
+  };
+};
 
 type Props = {
   drafts: PostProps[];
@@ -49,11 +49,11 @@ const Drafts: React.FC<Props> = (props) => {
       <div className="page">
         <h1>My Drafts</h1>
         <main>
-          {/* {props.drafts.map((post) => (
+          {props.drafts.map((post) => (
             <div key={post.id} className="post">
               <Post post={post} />
             </div>
-          ))} */}
+          ))}
         </main>
       </div>
       <style jsx>{`
