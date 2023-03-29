@@ -1,9 +1,11 @@
-.starting {
-  margin: 3rem auto;
-  text-align: center;
-  background-color: bisque;
+.section {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.4rem;
+  max-width: 80rem;
+  margin: auto;
 }
 
-.starting h1 {
-  font-size: 5rem;
+.paragraph {
+  margin: 1rem 0;
 }
