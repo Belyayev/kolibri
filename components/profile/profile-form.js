@@ -1,6 +1,6 @@
 import { useRef } from "react";
-
 import classes from "./profile-form.module.css";
+import Image from "next/image";
 
 function ProfileForm(props) {
   const oldPasswordRef = useRef();
@@ -21,19 +21,32 @@ function ProfileForm(props) {
   }
 
   return (
-    <form className={classes.form} onSubmit={submitHandler}>
-      <div className={classes.control}>
-        <label htmlFor="new-password">Новый пароль</label>
-        <input type="password" id="new-password" ref={newPasswordRef} />
+    <div className={classes.profilePage}>
+      <form className={classes.form} onSubmit={submitHandler}>
+        <div className={classes.control}>
+          <label htmlFor="new-password">Новый пароль</label>
+          <input type="password" id="new-password" ref={newPasswordRef} />
+        </div>
+        <div className={classes.control}>
+          <label htmlFor="old-password">Старый пароль</label>
+          <input type="password" id="old-password" ref={oldPasswordRef} />
+        </div>
+        <div className={classes.action}>
+          <button>Поменять пароль</button>
+        </div>
+      </form>
+      <div style={{ width: "30rem" }}>
+        <Image
+          src="https://github.com/Belyayev/imageStore/blob/main/Third_book.jpg?raw=true"
+          alt=""
+          title=""
+          width="100%"
+          height="100%"
+          layout="responsive"
+          objectFit="contain"
+        />
       </div>
-      <div className={classes.control}>
-        <label htmlFor="old-password">Старый пароль</label>
-        <input type="password" id="old-password" ref={oldPasswordRef} />
-      </div>
-      <div className={classes.action}>
-        <button>Поменять пароль</button>
-      </div>
-    </form>
+    </div>
   );
 }
 
