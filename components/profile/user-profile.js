@@ -1,13 +1,14 @@
 import ProfileForm from "./profile-form";
 import classes from "./user-profile.module.css";
+import React, { useState, useEffect } from "react";
 
 function UserProfile() {
-  // const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   // useEffect(() => {
   //   getSession().then((session) => {
   //     if (!session) {
-  //       window.location.href = '/auth';
+  //       window.location.href = "/auth";
   //     } else {
   //       setIsLoading(false);
   //     }

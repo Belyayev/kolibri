@@ -11,32 +11,26 @@ function MainNavigation() {
   }
 
   return (
-    <header className={classes.header}>
-      <Link href="/">
-        <a>
-          <div className={classes.logo}>Школа Русского Языка «Колибри»</div>
-        </a>
-      </Link>
-      <nav>
-        <ul>
+    <div className={classes.headerWrapper}>
+      <header className={classes.header}>
+        <Link href="/">
+          <a>
+            <div className={classes.logo}>Школа Русского Языка «Колибри»</div>
+          </a>
+        </Link>
+        <nav className={classes.navigation}>
           {!session && !loading && (
-            <li>
-              <Link href="/auth">Войти</Link>
-            </li>
+            <Link href="/auth">
+              <a>
+                <button>Войти</button>
+              </a>
+            </Link>
           )}
-          {session && (
-            <li>
-              <Link href="/profile">Профиль</Link>
-            </li>
-          )}
-          {session && (
-            <li>
-              <button onClick={logoutHandler}>Выйти</button>
-            </li>
-          )}
-        </ul>
-      </nav>
-    </header>
+          {session && <Link href="/profile">Профиль</Link>}
+          {session && <button onClick={logoutHandler}>Выйти</button>}
+        </nav>
+      </header>
+    </div>
   );
 }
 

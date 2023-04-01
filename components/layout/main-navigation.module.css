@@ -1,9 +1,23 @@
+.headerWrapper {
+  background-color: rgb(25, 32, 58);
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+}
+
 .header {
   display: flex;
-  background-color: rgb(25, 32, 58);
   justify-content: space-between;
-  align-items: center;
   padding: 1rem;
+  max-width: 80rem;
+  margin: auto;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .logo {
@@ -40,13 +54,14 @@
   padding: 0.5rem 1.5rem;
   border-radius: 6px;
   cursor: pointer;
+  margin: 0 1rem;
 }
 
 .header a:hover {
-  color: #c291e2;
+  text-decoration: underline;
 }
 
 .header button:hover {
-  background-color: #c291e2;
-  color: #38015c;
+  background-color: white;
+  color: rgb(25, 32, 58);
 }
