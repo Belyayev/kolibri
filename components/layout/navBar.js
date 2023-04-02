@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/client";
 
-import classes from "./main-navigation.module.css";
+import classes from "./main.module.css";
 
-function MainNavigation() {
+function NavBar() {
   const [session, loading] = useSession();
 
   function logoutHandler() {
@@ -26,6 +26,9 @@ function MainNavigation() {
               </a>
             </Link>
           )}
+          {session && session.user.email === "4xgood@gmail.com" && (
+            <Link href="/admin">Админ</Link>
+          )}
           {session && <Link href="/profile">Профиль</Link>}
           {session && <button onClick={logoutHandler}>Выйти</button>}
         </nav>
@@ -34,4 +37,4 @@ function MainNavigation() {
   );
 }
 
-export default MainNavigation;
+export default NavBar;

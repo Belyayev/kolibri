@@ -35,9 +35,18 @@ function ProfileForm(props) {
           <button>Поменять пароль</button>
         </div>
       </form>
-      <div style={{ width: "30rem" }}>
+      <div style={{ width: "20rem" }}>
         <Image
-          src="https://github.com/Belyayev/imageStore/blob/main/Third_book.jpg?raw=true"
+          src="https://github.com/Belyayev/imageStore/blob/main/some%20book%20name.png?raw=true"
+          alt=""
+          title=""
+          width="100%"
+          height="100%"
+          layout="responsive"
+          objectFit="contain"
+        />
+        <Image
+          src="https://imgtr.ee/images/2023/04/01/UVbF3.jpg"
           alt=""
           title=""
           width="100%"

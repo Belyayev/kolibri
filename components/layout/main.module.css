@@ -1,3 +1,10 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
 .headerWrapper {
   background-color: rgb(25, 32, 58);
   align-items: center;

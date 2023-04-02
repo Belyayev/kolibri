@@ -1,13 +1,12 @@
-import { Fragment } from 'react';
-
-import MainNavigation from './main-navigation';
+import NavBar from "./navBar";
+import classes from "./main.module.css";
 
 function Layout(props) {
   return (
-    <Fragment>
-      <MainNavigation />
+    <div className={classes.app}>
+      <NavBar />
       <main>{props.children}</main>
-    </Fragment>
+    </div>
   );
 }
 
