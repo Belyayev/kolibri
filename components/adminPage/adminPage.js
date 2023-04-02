@@ -2,7 +2,7 @@ import BookForm from "./bookForm";
 import classes from "./adminPage.module.css";
 import React from "react";
 
-function AdminPanel() {
+function AdminPage() {
   async function addBookHandler(bookData) {
     const response = await fetch("/api/books/addBook", {
       method: "POST",
@@ -25,4 +25,4 @@ function AdminPanel() {
   );
 }
 
-export default AdminPanel;
+export default AdminPage;

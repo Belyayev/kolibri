@@ -14,8 +14,6 @@ async function addBook(req, res) {
     bookAuthor,
     numberOfPages,
     bookImageLink,
-    bookHolder,
-    waitingList,
   } = data;
 
   if (!bookName) {

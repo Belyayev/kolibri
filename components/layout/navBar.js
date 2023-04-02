@@ -19,6 +19,7 @@ function NavBar() {
           </a>
         </Link>
         <nav className={classes.navigation}>
+          <Link href="/books">Книги</Link>
           {!session && !loading && (
             <Link href="/auth">
               <a>
