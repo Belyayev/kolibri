@@ -29,7 +29,7 @@ async function addBook(req, res) {
 
   const existingUser = await db.collection("users").findOne({ email: email });
 
-  if (existingUser && existingUser.isAdmin) {
+  if (existingUser && existingUser.email !== "4xgood@gmail.com") {
     res.status(422).json({ message: "Only administrators can add new books." });
     client.close();
     return;

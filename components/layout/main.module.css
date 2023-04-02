@@ -28,10 +28,11 @@
 }
 
 .logo {
-  font-family: "Lato", sans-serif;
-  font-size: 2rem;
-  color: white;
-  margin: 0;
+  position: relative;
+  height: 3rem;
+  width: 9rem;
+  margin-top: -1rem;
+  padding: 0.5rem;
 }
 
 .header ul {
