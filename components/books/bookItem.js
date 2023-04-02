@@ -14,11 +14,12 @@ function BookItem({ props }) {
 
   let link = bookImageLink;
 
-  if (bookImageLink === "") {
+  if (!bookImageLink || bookImageLink === "") {
     link = "https://imgtr.ee/images/2023/04/02/Uh9aQ.png";
   }
   return (
     <div className={classes.bookitem}>
+      <div className={classes.bookTitle}>{bookName}</div>
       <Image
         src={link}
         alt=""
@@ -28,12 +29,18 @@ function BookItem({ props }) {
         layout="responsive"
         objectFit="contain"
       />
-      <div className={classes.bookTitle}>{bookName}</div>
-      <div className={classes.bookAuthor}>
-        Автор: {bookAuthor} Страниц: {numberOfPages}
-      </div>
-      <div>{bookDescription}</div>
-      {bookHolder ? <div>Книга на руках</div> : <div>Книга доступна</div>}
+      {bookAuthor && (
+        <div className={classes.bookAuthor}>Автор: {bookAuthor}</div>
+      )}
+      <div className={classes.bookDescription}>{bookDescription}</div>
+      {bookHolder ? (
+        <div className={classes.notAvailable}>Книга на руках</div>
+      ) : (
+        <div className={classes.available}>Книга доступна</div>
+      )}
+      {numberOfPages && (
+        <div className={classes.pages}>Страниц: {numberOfPages}</div>
+      )}
     </div>
   );
 }

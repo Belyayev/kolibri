@@ -1,4 +1,4 @@
-import BookForm from "./bookForm";
+import { AddBookForm } from "./addBookForm";
 import classes from "./adminPage.module.css";
 import React from "react";
 
@@ -18,10 +18,10 @@ function AdminPage() {
   }
 
   return (
-    <section className={classes.profile}>
-      <h1>Панель Администратора</h1>
-      <BookForm onAddBook={addBookHandler} />
-    </section>
+    <div className={classes.adminPage}>
+      <div className={classes.adminTitle}>Панель Администратора</div>
+      <AddBookForm onAddBook={addBookHandler} />
+    </div>
   );
 }
 

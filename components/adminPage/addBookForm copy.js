@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import classes from "./adminForm.module.css";
 
-function BookForm(props) {
+function AddBookForm(props) {
   const bookName = useRef();
   const bookDescription = useRef();
   const bookAuthor = useRef();
@@ -57,4 +57,4 @@ function BookForm(props) {
   );
 }
 
-export default BookForm;
+export default AddBookForm;

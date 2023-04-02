@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Commissioner:wght@500&family=Cormorant+Infant:wght@500&family=Russo+One&family=Vollkorn:wght@500&display=swap");
 .booksPage {
   display: flex;
   flex-direction: column;
@@ -29,20 +30,51 @@
   height: 24rem;
   margin: 0.5rem;
   border-radius: 0.5rem;
-  padding: 0.5rem;
+  padding: 0.1rem 0.5rem 1.5rem 0.5rem;
+  color: rgb(25, 32, 58);
   background-color: white;
   box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(255, 255, 255),
     0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
 }
 
 .bookTitle {
-  font-size: 1.4rem;
+  font-size: 1.1rem;
+  font-family: "Russo One", sans-serif;
+  color: rgb(66, 80, 135);
 }
 
 .bookAuthor {
-  font-size: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  font-family: "Vollkorn", serif;
+}
+
+.pages {
+  position: absolute;
+  bottom: 0.2rem;
+  left: 0.5rem;
+  font-family: "Commissioner", sans-serif;
 }
 
 .bookDescription {
-  font-size: 1rem;
+  font-size: 1.2rem;
+  font-family: "Caveat", cursive;
+  color: rgb(66, 80, 135);
+}
+
+.available {
+  position: absolute;
+  bottom: 0.2rem;
+  right: 0.5rem;
+  color: rgb(4, 135, 22);
+  font-family: "Russo One", sans-serif;
+}
+
+.notAvailable {
+  position: absolute;
+  bottom: 0.2rem;
+  right: 0.5rem;
+  color: rgb(222, 0, 0);
+  font-family: "Russo One", sans-serif;
 }
