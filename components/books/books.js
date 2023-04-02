@@ -1,5 +1,6 @@
 import classes from "./books.module.css";
 import React, { useEffect, useState } from "react";
+import BookItem from "./bookItem";
 
 async function getBooks() {
   const response = await fetch("/api/books/getBooks", {
@@ -24,13 +25,17 @@ function Books() {
     getBooks().then((data) => setBooks(data));
   }, []);
   return (
-    <section className={classes.profile}>
-      <h1>Список книг</h1>
-      {books &&
-        books.map((book, index) => (
-          <div key={book.bookName + index}>{book.bookName}</div>
-        ))}
-    </section>
+    <div className={classes.booksPage}>
+      <div className={classes.booksTitle}>Книги в нашей библиотеке</div>
+      <div className={classes.booksList}>
+        {books &&
+          books.map((book) => (
+            <div key={book._id}>
+              <BookItem props={book} />
+            </div>
+          ))}
+      </div>
+    </div>
   );
 }
 

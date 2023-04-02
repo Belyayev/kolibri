@@ -1,8 +1,48 @@
-.profile {
-  margin: 3rem auto;
+.booksPage {
+  display: flex;
+  flex-direction: column;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.booksTitle {
   text-align: center;
+  font-size: 1.8rem;
+  margin: 0.5rem;
+}
+
+.booksList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .profile h1 {
   font-size: 5rem;
+}
+
+.bookitem {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 18rem;
+  height: 24rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  background-color: white;
+  box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
+
+.bookTitle {
+  font-size: 1.4rem;
+}
+
+.bookAuthor {
+  font-size: 1.2rem;
+}
+
+.bookDescription {
+  font-size: 1rem;
 }
