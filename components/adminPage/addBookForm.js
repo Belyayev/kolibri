@@ -1,19 +1,6 @@
-import React, { useState } from "react";
-import { PlusOutlined } from "@ant-design/icons";
-import {
-  Form,
-  Input,
-  Button,
-  Radio,
-  Select,
-  Cascader,
-  DatePicker,
-  InputNumber,
-  TreeSelect,
-  Switch,
-  Checkbox,
-  Upload,
-} from "antd";
+import React from "react";
+import { Form, Input, Button, InputNumber } from "antd";
+import classes from "./adminForm.module.css";
 
 const { TextArea } = Input;
 
@@ -39,11 +26,12 @@ export const AddBookForm = (props) => {
   }
 
   return (
-    <>
+    <div className={classes.addBookWrapper}>
+      <div className={classes.addBookTitle}>Дабавить новую книгу</div>
       <Form
         form={form}
-        labelCol={{ span: 3 }}
-        wrapperCol={{ span: 15 }}
+        labelCol={{ span: 4 }}
+        wrapperCol={{ span: 20 }}
         layout="horizontal"
         style={{ maxWidth: 600 }}
         onFinish={submitHandler}
@@ -63,12 +51,12 @@ export const AddBookForm = (props) => {
         <Form.Item label="Картинка" name="bookImageLink">
           <Input />
         </Form.Item>
-        <Form.Item wrapperCol={{ offset: 14 }}>
+        <Form.Item wrapperCol={{ offset: 19 }}>
           <Button type="primary" htmlType="submit">
             Добавить
           </Button>
         </Form.Item>
       </Form>
-    </>
+    </div>
   );
 };
