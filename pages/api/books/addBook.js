@@ -18,7 +18,7 @@ async function addBook(req, res) {
 
   if (!bookName) {
     res.status(422).json({
-      message: "Book name is required",
+      message: "Название книги обязательно",
     });
     return;
   }
@@ -45,7 +45,7 @@ async function addBook(req, res) {
     waitingList: [],
   });
 
-  res.status(201).json({ message: "Book was added!" });
+  res.status(201).json({ message: "Книга добавлена!" });
   client.close();
 }
 

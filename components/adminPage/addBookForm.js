@@ -15,13 +15,11 @@ import {
   Upload,
 } from "antd";
 
-const { RangePicker } = DatePicker;
 const { TextArea } = Input;
 
 export const AddBookForm = (props) => {
+  const [form] = Form.useForm();
   function submitHandler(values) {
-    console.log("success:", values);
-
     const {
       bookName,
       bookAuthor,
@@ -37,11 +35,13 @@ export const AddBookForm = (props) => {
       numberOfPages,
       bookImageLink,
     });
+    form.resetFields();
   }
 
   return (
     <>
       <Form
+        form={form}
         labelCol={{ span: 3 }}
         wrapperCol={{ span: 15 }}
         layout="horizontal"
