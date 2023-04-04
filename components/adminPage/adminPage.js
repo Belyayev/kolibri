@@ -6,6 +6,7 @@ import { UpdateBookForm } from "./updateBookForm";
 
 function AdminPage() {
   const [alert, setAlert] = useState(null);
+
   async function addBookHandler(bookData) {
     const response = await fetch("/api/books/addBook", {
       method: "POST",
@@ -20,10 +21,21 @@ function AdminPage() {
     return data;
   }
 
-  const onChange = (key) => {
-    console.log(key);
-  };
-  const items = [
+  async function updateBookHandler(bookData) {
+    const response = await fetch("/api/books/updateBook", {
+      method: "PATCH",
+      body: JSON.stringify(bookData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+    setAlert(data.message);
+    return data;
+  }
+
+  const bookTabs = [
     {
       key: "1",
       label: `Добавить Книгу`,
@@ -32,7 +44,7 @@ function AdminPage() {
     {
       key: "2",
       label: `Редактировать Книгу`,
-      children: <UpdateBookForm onAddBook={addBookHandler} />,
+      children: <UpdateBookForm onUpdateBook={updateBookHandler} />,
     },
   ];
 
@@ -40,7 +52,7 @@ function AdminPage() {
     <div className={classes.adminPage}>
       {alert && notification.open({ message: alert })}
       <div className={classes.adminTitle}>Панель Администратора</div>
-      <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
+      <Tabs defaultActiveKey="1" items={bookTabs} />
     </div>
   );
 }

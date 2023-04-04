@@ -1,3 +1,4 @@
+import { getSession } from "next-auth/client";
 import { connectToDatabase } from "../../../lib/db";
 
 async function addBook(req, res) {
@@ -25,17 +26,28 @@ async function addBook(req, res) {
 
   const client = await connectToDatabase();
 
-  const db = client.db();
+  const session = await getSession({ req: req });
 
-  const existingUser = await db.collection("users").findOne({ email: email });
+  if (!session) {
+    res.status(401).json({ message: "Not authenticated!" });
+    return;
+  }
 
-  if (existingUser && existingUser.email !== "4xgood@gmail.com") {
-    res.status(422).json({ message: "Only administrators can add new books." });
+  const userEmail = session.user.email;
+
+  const administrators = ["sachyk81@hotmail.com", "4xgood@gmail.com"];
+
+  if (!administrators.includes(userEmail)) {
+    res
+      .status(422)
+      .json({ message: "Только администраторы могут добавлять книги" });
     client.close();
     return;
   }
 
-  const result = await db.collection("books").insertOne({
+  const db = client.db();
+
+  const result = await db.collection("books").updateOne({
     bookName,
     bookDescription,
     bookAuthor,
