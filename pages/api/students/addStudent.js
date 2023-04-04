@@ -1,24 +1,25 @@
 import { getSession } from "next-auth/client";
 import { connectToDatabase } from "../../../lib/db";
 
-async function addBook(req, res) {
+async function addStudent(req, res) {
   if (req.method !== "POST") {
     return;
   }
 
   const data = req.body;
 
-  const {
-    bookName,
-    bookDescription,
-    bookAuthor,
-    numberOfPages,
-    bookImageLink,
-  } = data;
+  const { studentName, phoneNumber, emailAddress, notes } = data;
 
-  if (!bookName) {
+  if (!studentName) {
     res.status(422).json({
-      message: "Название книги обязательно",
+      message: "Имя студента обязательно",
+    });
+    return;
+  }
+
+  if (!emailAddress) {
+    res.status(422).json({
+      message: "Адрес электронной почты обязателен",
     });
     return;
   }
@@ -39,25 +40,22 @@ async function addBook(req, res) {
   if (!administrators.includes(userEmail)) {
     res
       .status(422)
-      .json({ message: "Только администраторы могут добавлять книги" });
+      .json({ message: "Только администраторы могут добавлять студентов" });
     client.close();
     return;
   }
 
   const db = client.db();
 
-  const result = await db.collection("books").insertOne({
-    bookName,
-    bookDescription,
-    bookAuthor,
-    numberOfPages,
-    bookImageLink,
-    bookHolder: null,
-    waitingList: [],
+  const result = await db.collection("students").insertOne({
+    studentName,
+    phoneNumber,
+    emailAddress,
+    notes,
   });
 
-  res.status(201).json({ message: "Книга добавлена!" });
+  res.status(201).json({ message: "Студент добавлен!" });
   client.close();
 }
 
-export default addBook;
+export default addStudent;

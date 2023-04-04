@@ -4,18 +4,6 @@ import classes from "./adminPage.module.css";
 
 const { TextArea } = Input;
 
-async function getBooks() {
-  const response = await fetch("/api/books/getBooks", {
-    method: "GET",
-    headers: {
-      Accept: "application/json",
-    },
-  });
-
-  const data = await response.json();
-  return data;
-}
-
 async function getStudents() {
   const response = await fetch("/api/students/getStudents", {
     method: "GET",
@@ -25,74 +13,52 @@ async function getStudents() {
   });
 
   const data = await response.json();
+  console.log(data);
   return data;
 }
 
-export const UpdateBookForm = (props) => {
-  const [books, setBooks] = useState([]);
+export const UpdateStudentForm = (props) => {
   const [students, setStudents] = useState([]);
-  const [selectedBook, setSelectedBook] = useState({});
+  const [selectedStudent, setSelectedStudent] = useState({});
 
-  let bookList = [];
   let studentList = [];
 
-  books.map((book, index) =>
-    bookList.push({
+  students.map((book, index) =>
+    studentList.push({
       value: book._id,
       label: `${index}. ${book.bookName}`,
     })
   );
 
-  students.map((student) =>
-    studentList.push({
-      value: student.emailAddress,
-      label: student.studentName,
-    })
-  );
-
   useEffect(() => {
-    getBooks().then((data) => setBooks(data));
     getStudents().then((data) => setStudents(data));
   }, []);
 
   const [form] = Form.useForm();
 
   function submitHandler(values) {
-    const {
-      _id,
-      dateBorrowed,
-      bookHolder,
-      bookName,
-      bookAuthor,
-      numberOfPages,
-      bookDescription,
-      bookComment,
-      bookImageLink,
-    } = values;
+    const { _id, studentName, phoneNumber, emailAddress, notes } = values;
 
     props.onUpdateBook({
       _id,
-      dateBorrowed,
-      bookHolder,
-      bookName,
-      bookDescription,
-      bookComment,
-      bookAuthor,
-      numberOfPages,
-      bookImageLink,
+      studentName,
+      phoneNumber,
+      emailAddress,
+      notes,
     });
     form.resetFields();
   }
 
   const onChange = (value) => {
-    form.setFieldsValue(books.filter((book) => book._id === value)[0]);
-    setSelectedBook(books.filter((book) => book._id === value)[0]);
+    form.setFieldsValue(students.filter((student) => student._id === value)[0]);
+    setSelectedStudent(students.filter((student) => student._id === value)[0]);
   };
 
-  console.log(selectedBook);
   return (
     <div className={classes.addBookWrapper}>
-      <div className={classes.addBookTitle}>Редактировать книгу</div>
+      <div className={classes.addBookTitle}>
+        Редактировать студента (пока не работает)
+      </div>
       <Form
         form={form}
         labelCol={{ span: 4 }}
@@ -108,9 +74,9 @@ export const UpdateBookForm = (props) => {
           <Select
             allowClear
             showSearch
-            onChange={onChange}
             placeholder="Выберете книгу для редактирования"
-            options={bookList}
+            options={studentList}
+            onChange={onChange}
             filterOption={(input, option) =>
               (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
             }
@@ -118,22 +84,24 @@ export const UpdateBookForm = (props) => {
             Название книги
           </Select>
         </Form.Item>
-        <Form.Item label="Выдана" name="dateBorrowed">
-          <input
-            className={classes.datePicker}
-            type="date"
-            value={selectedBook.dateBorrowed ? selectedBook.dateBorrowed : ""}
-          />
-        </Form.Item>
         <Form.Item label="На руках" name="bookHolder">
           <Select
             allowClear
             showSearch
-            placeholder="Имя студента, получившего книгу"
-            options={studentList}
-            filterOption={(input, option) =>
-              (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
-            }
+            options={[
+              {
+                value: "jack",
+                label: "Jack",
+              },
+              {
+                value: "lucy",
+                label: "Lucy",
+              },
+              {
+                value: "tom",
+                label: "Tom",
+              },
+            ]}
           >
             Имя Студента
           </Select>
@@ -166,7 +134,7 @@ export const UpdateBookForm = (props) => {
         type="default"
         className={classes.deleteBook}
         onClick={() => {
-          props.onDeleteBook(selectedBook._id);
+          props.onDeleteBook(selectedStudent._id);
           form.resetFields();
         }}
       >

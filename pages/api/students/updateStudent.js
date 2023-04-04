@@ -1,8 +1,7 @@
 import { ObjectId } from "mongodb";
 import { connectToDatabase } from "../../../lib/db";
-import moment from "moment";
 
-async function updateBook(req, res) {
+async function updateStudent(req, res) {
   if (req.method !== "PATCH") {
     return;
   }
@@ -11,7 +10,6 @@ async function updateBook(req, res) {
 
   const {
     _id,
-    dateBorrowed,
     bookHolder,
     bookName,
     bookDescription,
@@ -19,6 +17,7 @@ async function updateBook(req, res) {
     bookAuthor,
     numberOfPages,
     bookImageLink,
+    dateBorrowed,
   } = data;
 
   if (!bookName) {
@@ -44,8 +43,8 @@ async function updateBook(req, res) {
     { _id: ObjectId(_id) },
     {
       $set: {
-        dateBorrowed: moment(dateBorrowed).format("YYYY-MM-DD"),
         bookHolder,
+        dateBorrowed,
         bookName,
         bookDescription,
         bookComments,
@@ -60,4 +59,4 @@ async function updateBook(req, res) {
   client.close();
 }
 
-export default updateBook;
+export default updateStudent;
