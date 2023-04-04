@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Form, Input, Select, Button, InputNumber } from "antd";
-import classes from "./adminForm.module.css";
+import classes from "./adminPage.module.css";
 
 const { TextArea } = Input;
 
@@ -19,6 +19,7 @@ async function getBooks() {
 
 export const UpdateBookForm = (props) => {
   const [books, setBooks] = useState([]);
+  const [selectedBook, setSelectedBook] = useState({});
 
   let bookList = [];
 
@@ -38,6 +39,7 @@ export const UpdateBookForm = (props) => {
   function submitHandler(values) {
     const {
       _id,
+      bookHolder,
       bookName,
       bookAuthor,
       numberOfPages,
@@ -48,6 +50,7 @@ export const UpdateBookForm = (props) => {
 
     props.onUpdateBook({
       _id,
+      bookHolder,
       bookName,
       bookDescription,
       bookComment,
@@ -60,6 +63,7 @@ export const UpdateBookForm = (props) => {
 
   const onChange = (value) => {
     form.setFieldsValue(books.filter((book) => book._id === value)[0]);
+    setSelectedBook(books.filter((book) => book._id === value)[0]);
   };
 
   return (
@@ -78,6 +82,7 @@ export const UpdateBookForm = (props) => {
         </Form.Item>
         <Form.Item label="Книга">
           <Select
+            allowClear
             showSearch
             placeholder="Выберете книгу для редактирования"
             options={bookList}
@@ -89,11 +94,26 @@ export const UpdateBookForm = (props) => {
             Название книги
           </Select>
         </Form.Item>
-        <Form.Item label="На руках">
-          <Select>
-            <Select.Option showSearch value="demo">
-              Имя Студента
-            </Select.Option>
+        <Form.Item label="На руках" name="bookHolder">
+          <Select
+            allowClear
+            showSearch
+            options={[
+              {
+                value: "jack",
+                label: "Jack",
+              },
+              {
+                value: "lucy",
+                label: "Lucy",
+              },
+              {
+                value: "tom",
+                label: "Tom",
+              },
+            ]}
+          >
+            Имя Студента
           </Select>
         </Form.Item>
         <Form.Item label="Название" name="bookName">
@@ -120,6 +140,13 @@ export const UpdateBookForm = (props) => {
           </Button>
         </Form.Item>
       </Form>
+      <Button
+        type="default"
+        className={classes.deleteBook}
+        onClick={() => props.onDeleteBook(selectedBook._id)}
+      >
+        Удалить Книгу
+      </Button>
     </div>
   );
 };

@@ -35,6 +35,20 @@ function AdminPage() {
     return data;
   }
 
+  async function deleteBookHandler(_id) {
+    const response = await fetch("/api/books/deleteBook", {
+      method: "DELETE",
+      body: JSON.stringify({ _id: _id }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+    setAlert(data.message);
+    return data;
+  }
+
   const bookTabs = [
     {
       key: "1",
@@ -44,13 +58,18 @@ function AdminPage() {
     {
       key: "2",
       label: `Редактировать Книгу`,
-      children: <UpdateBookForm onUpdateBook={updateBookHandler} />,
+      children: (
+        <UpdateBookForm
+          onUpdateBook={updateBookHandler}
+          onDeleteBook={deleteBookHandler}
+        />
+      ),
     },
   ];
 
   return (
     <div className={classes.adminPage}>
-      {alert && notification.open({ message: alert })}
+      {alert && notification.open({ placement: "topLeft", message: alert })}
       <div className={classes.adminTitle}>Панель Администратора</div>
       <Tabs defaultActiveKey="1" items={bookTabs} />
     </div>

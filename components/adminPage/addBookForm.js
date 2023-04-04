@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Input, Button, InputNumber } from "antd";
-import classes from "./adminForm.module.css";
+import classes from "./adminPage.module.css";
 
 const { TextArea } = Input;
 

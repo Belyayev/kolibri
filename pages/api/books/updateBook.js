@@ -10,6 +10,7 @@ async function updateBook(req, res) {
 
   const {
     _id,
+    bookHolder,
     bookName,
     bookDescription,
     bookComments,
@@ -17,7 +18,6 @@ async function updateBook(req, res) {
     numberOfPages,
     bookImageLink,
     dateBorrowed,
-    bookHolder,
   } = data;
 
   if (!bookName) {
@@ -43,14 +43,14 @@ async function updateBook(req, res) {
     { _id: ObjectId(_id) },
     {
       $set: {
+        bookHolder,
+        dateBorrowed,
         bookName,
         bookDescription,
         bookComments,
         bookAuthor,
         numberOfPages,
         bookImageLink,
-        bookHolder,
-        dateBorrowed,
       },
     }
   );

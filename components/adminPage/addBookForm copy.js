@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import classes from "./adminForm.module.css";
+import classes from "./adminPage.module.css";
 
 function AddBookForm(props) {
   const bookName = useRef();
