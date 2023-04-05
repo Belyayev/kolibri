@@ -81,10 +81,13 @@
   color: black;
 }
 
+.formRow {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .deleteBook {
-  position: absolute;
-  bottom: 1.5rem;
-  left: 6rem;
   background-color: rgb(195, 0, 0);
   color: white;
   font-weight: bold;

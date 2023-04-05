@@ -155,22 +155,22 @@ export const UpdateBookForm = (props) => {
         <Form.Item label="Картинка" name="bookImageLink">
           <Input />
         </Form.Item>
-        <Form.Item wrapperCol={{ offset: 19 }}>
+        <Form.Item className={classes.formRow}>
+          <Button
+            type="default"
+            className={classes.deleteBook}
+            onClick={() => {
+              props.onDeleteBook(selectedBook._id);
+              form.resetFields();
+            }}
+          >
+            Удалить Книгу
+          </Button>
           <Button type="primary" htmlType="submit">
             Обновить
           </Button>
         </Form.Item>
       </Form>
-      <Button
-        type="default"
-        className={classes.deleteBook}
-        onClick={() => {
-          props.onDeleteBook(selectedBook._id);
-          form.resetFields();
-        }}
-      >
-        Удалить Книгу
-      </Button>
     </div>
   );
 };

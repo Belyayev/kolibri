@@ -41,7 +41,7 @@ export const AddStudentForm = (props) => {
         <Form.Item label="Отметки" name="notes">
           <TextArea rows={4} />
         </Form.Item>
-        <Form.Item wrapperCol={{ offset: 19 }}>
+        <Form.Item>
           <Button type="primary" htmlType="submit">
             Добавить
           </Button>

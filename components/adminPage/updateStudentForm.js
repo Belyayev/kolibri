@@ -94,21 +94,21 @@ export const UpdateStudentForm = (props) => {
         <Form.Item label="Отметки" name="notes">
           <TextArea rows={4} />
         </Form.Item>
-        <Form.Item wrapperCol={{ offset: 19 }}>
+        <Form.Item className={classes.formRow}>
+          <Button
+            type="default"
+            className={classes.deleteBook}
+            onClick={() => {
+              props.onDeleteStudent(selectedStudent._id);
+              form.resetFields();
+            }}
+          >
+            Удалить Студента
+          </Button>
           <Button type="primary" htmlType="submit">
             Обновить
           </Button>
         </Form.Item>
-        <Button
-          type="default"
-          className={classes.deleteBook}
-          onClick={() => {
-            props.onDeleteStudent(selectedStudent._id);
-            form.resetFields();
-          }}
-        >
-          Удалить Студента
-        </Button>
       </Form>
     </div>
   );

@@ -51,7 +51,7 @@ export const AddBookForm = (props) => {
         <Form.Item label="Картинка" name="bookImageLink">
           <Input />
         </Form.Item>
-        <Form.Item wrapperCol={{ offset: 19 }}>
+        <Form.Item>
           <Button type="primary" htmlType="submit">
             Добавить
           </Button>
