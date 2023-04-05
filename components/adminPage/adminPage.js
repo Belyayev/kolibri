@@ -133,8 +133,8 @@ function AdminPage() {
     <div className={classes.adminPage}>
       {alert && notification.open({ placement: "topLeft", message: alert })}
       <div className={classes.adminTitle}>Панель Администратора</div>
-      <Tabs defaultActiveKey="1" items={booksTabs} />
-      <Tabs defaultActiveKey="1" items={studentsTabs} />
+      <Tabs className={classes.tab} defaultActiveKey="1" items={booksTabs} />
+      <Tabs className={classes.tab} defaultActiveKey="1" items={studentsTabs} />
     </div>
   );
 }

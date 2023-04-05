@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useSession, signOut } from "next-auth/client";
+import { HomeFilled, ReadFilled, LockFilled } from "@ant-design/icons";
 
 import Logo from "../../Images/Logo.png";
 
@@ -28,9 +29,30 @@ function NavBar() {
           />
         </div>
 
-        <nav className={classes.navigation}>
-          <Link href="/">Главная</Link>
-          <Link href="/books">Книги</Link>
+        <div className={classes.navigation}>
+          <Link passHref href="/">
+            <div className={classes.navItem}>
+              <HomeFilled className={classes.navIcon} />
+              <span className={classes.navLabel}>Главная</span>
+            </div>
+          </Link>
+          <Link passHref href="/books">
+            <div className={classes.navItem}>
+              <ReadFilled className={classes.navIcon} />
+              <span className={classes.navLabel}>Книги</span>
+            </div>
+          </Link>
+          {session &&
+            (session.user.email === "4xgood@gmail.com" ||
+              session.user.email === "sachyk81@hotmail.com") && (
+              <Link passHref href="/admin">
+                <div className={classes.navItem}>
+                  <LockFilled className={classes.navIcon} />
+                  <span className={classes.navLabel}>Админ</span>
+                </div>
+              </Link>
+            )}
+
           {!session && !loading && (
             <Link href="/auth">
               <a>
@@ -38,14 +60,9 @@ function NavBar() {
               </a>
             </Link>
           )}
-          {session &&
-            (session.user.email === "4xgood@gmail.com" ||
-              session.user.email === "sachyk81@hotmail.com") && (
-              <Link href="/admin">Админ</Link>
-            )}
           {/* {session && <Link href="/profile">Профиль</Link>} */}
           {session && <button onClick={logoutHandler}>Выйти</button>}
-        </nav>
+        </div>
       </header>
     </div>
   );

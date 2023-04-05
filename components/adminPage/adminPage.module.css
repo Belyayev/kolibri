@@ -1,9 +1,10 @@
 .adminPage {
   display: flex;
-  flex-direction: column;
   max-width: 80rem;
-  margin: 0 auto;
-  align-items: center;
+  margin: auto;
+  justify-content: center;
+  padding: 1rem;
+  flex-wrap: wrap;
 }
 
 .adminTitle {
@@ -12,21 +13,18 @@
   margin: 0.5rem;
 }
 
-.adminPage {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  max-width: 60rem;
-  margin: auto;
+.tab {
+  width: 100%;
 }
 
 .addBookWrapper {
+  display: flex;
+  flex-direction: column;
   position: relative;
   border: 1px solid black;
   padding: 1rem 1rem 0 1rem;
   border-radius: 1rem;
-  width: 30rem;
+  max-width: 38rem;
   margin-bottom: 2rem;
 }
 

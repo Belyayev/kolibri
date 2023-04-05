@@ -25,6 +25,26 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  color: white;
+}
+
+.navItem {
+  color: white;
+  cursor: pointer;
+}
+
+.navItem:hover {
+  color: rgb(30, 255, 0);
+}
+
+.navLabel {
+  margin: 0.3rem;
+  font-size: 1.4rem;
+}
+
+.navIcon {
+  font-size: 1.4rem;
+  margin-left: 1rem;
 }
 
 .logo {
@@ -73,4 +93,10 @@
 .header button:hover {
   background-color: white;
   color: rgb(25, 32, 58);
+}
+
+@media (max-width: 700px) {
+  .navLabel {
+    display: none;
+  }
 }

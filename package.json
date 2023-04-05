@@ -12,6 +12,7 @@
     "node": "v16.15.0"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.0.1",
     "antd": "^5.3.3",
     "bcryptjs": "^2.4.3",
     "moment": "^2.29.4",
