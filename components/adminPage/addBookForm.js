@@ -27,7 +27,7 @@ export const AddBookForm = (props) => {
 
   return (
     <div className={classes.addBookWrapper}>
-      <div className={classes.addBookTitle}>Дабавить новую книгу</div>
+      <div className={classes.addBookTitle}>Добавить новую книгу</div>
       <Form
         form={form}
         labelCol={{ span: 4 }}

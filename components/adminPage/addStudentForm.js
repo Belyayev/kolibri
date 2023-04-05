@@ -20,7 +20,7 @@ export const AddStudentForm = (props) => {
 
   return (
     <div className={classes.addBookWrapper}>
-      <div className={classes.addBookTitle}>Дабавить Студента</div>
+      <div className={classes.addBookTitle}>Добавить Студента</div>
       <Form
         form={form}
         labelCol={{ span: 4 }}
