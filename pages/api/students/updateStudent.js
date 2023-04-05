@@ -8,54 +8,47 @@ async function updateStudent(req, res) {
 
   const data = req.body;
 
-  const {
-    _id,
-    bookHolder,
-    bookName,
-    bookDescription,
-    bookComments,
-    bookAuthor,
-    numberOfPages,
-    bookImageLink,
-    dateBorrowed,
-  } = data;
+  const { _id, studentName, phoneNumber, emailAddress, notes } = data;
 
-  if (!bookName) {
+  if (!studentName) {
     res.status(422).json({
-      message: "Название книги обязательно",
+      message: "Имя обязательно",
+    });
+    return;
+  }
+
+  if (!emailAddress) {
+    res.status(422).json({
+      message: "Адрес электронной почты обязателен",
     });
     return;
   }
 
   const client = await connectToDatabase();
 
-  const booksCollection = client.db().collection("books");
+  const studentsCollection = client.db().collection("students");
 
-  const book = await booksCollection.findOne(ObjectId(_id));
+  const book = await studentsCollection.findOne(ObjectId(_id));
 
   if (!book) {
-    res.status(404).json({ message: "Книга не найдена :(" });
+    res.status(404).json({ message: "Студент не найден :(" });
     client.close();
     return;
   }
 
-  const result = await booksCollection.updateOne(
+  const result = await studentsCollection.updateOne(
     { _id: ObjectId(_id) },
     {
       $set: {
-        bookHolder,
-        dateBorrowed,
-        bookName,
-        bookDescription,
-        bookComments,
-        bookAuthor,
-        numberOfPages,
-        bookImageLink,
+        studentName,
+        phoneNumber,
+        emailAddress,
+        notes,
       },
     }
   );
 
-  res.status(201).json({ message: "Книга отредактирована!" });
+  res.status(201).json({ message: "Студент отредактирован!" });
   client.close();
 }
 

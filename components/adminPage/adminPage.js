@@ -65,6 +65,34 @@ function AdminPage() {
     return data;
   }
 
+  async function updateStudentHandler(studentData) {
+    const response = await fetch("/api/students/updateStudent", {
+      method: "PATCH",
+      body: JSON.stringify(studentData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+    setAlert(data.message);
+    return data;
+  }
+
+  async function deleteStudentHandler(_id) {
+    const response = await fetch("/api/students/deleteStudent", {
+      method: "DELETE",
+      body: JSON.stringify({ _id: _id }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+    setAlert(data.message);
+    return data;
+  }
+
   const booksTabs = [
     {
       key: "1",
@@ -94,8 +122,8 @@ function AdminPage() {
       label: `Редактировать Студента`,
       children: (
         <UpdateStudentForm
-        // onUpdateStudent={updateStudentHandler}
-        // onDeleteStudent={deleteStudentHandler}
+          onUpdateStudent={updateStudentHandler}
+          onDeleteStudent={deleteStudentHandler}
         />
       ),
     },

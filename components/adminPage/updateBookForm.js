@@ -89,7 +89,6 @@ export const UpdateBookForm = (props) => {
     setSelectedBook(books.filter((book) => book._id === value)[0]);
   };
 
-  console.log(selectedBook);
   return (
     <div className={classes.addBookWrapper}>
       <div className={classes.addBookTitle}>Редактировать книгу</div>

@@ -12,21 +12,21 @@ async function deleteStudent(req, res) {
 
   const client = await connectToDatabase();
 
-  const booksCollection = client.db().collection("books");
+  const studentsCollection = client.db().collection("students");
 
-  const book = await booksCollection.findOne(ObjectId(id));
+  const book = await studentsCollection.findOne(ObjectId(id));
 
   if (!book) {
-    res.status(404).json({ message: "Книга не найдена :(" });
+    res.status(404).json({ message: "Студент не найден :(" });
     client.close();
     return;
   }
 
-  const result = await booksCollection.deleteOne({
+  const result = await studentsCollection.deleteOne({
     _id: ObjectId(id),
   });
 
-  res.status(201).json({ message: "Книга уделена!" });
+  res.status(201).json({ message: "Студент уделен!" });
   client.close();
 }
 
