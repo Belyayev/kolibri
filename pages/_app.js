@@ -6,6 +6,12 @@ import Layout from "../components/layout/layout";
 function MyApp({ Component, pageProps }) {
   return (
     <div className={classes.main}>
+      <head>
+        <meta
+          name="viewport"
+          content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"
+        />
+      </head>
       <style jsx global>{`
         html,
         body {
