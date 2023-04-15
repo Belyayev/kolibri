@@ -23,7 +23,7 @@ function StartingPageContent() {
           alt=""
           title=""
           width="100%"
-          height="40rem"
+          height="35rem"
           layout="responsive"
           objectFit="contain"
         />
@@ -32,7 +32,7 @@ function StartingPageContent() {
           alt=""
           title=""
           width="100%"
-          height="40rem"
+          height="35rem"
           layout="responsive"
           objectFit="contain"
         />
@@ -41,7 +41,7 @@ function StartingPageContent() {
           alt=""
           title=""
           width="100%"
-          height="40rem"
+          height="35rem"
           layout="responsive"
           objectFit="contain"
         />
@@ -50,7 +50,7 @@ function StartingPageContent() {
           alt=""
           title=""
           width="100%"
-          height="40rem"
+          height="35rem"
           layout="responsive"
           objectFit="contain"
         />
@@ -59,7 +59,7 @@ function StartingPageContent() {
           alt=""
           title=""
           width="100%"
-          height="40rem"
+          height="35rem"
           layout="responsive"
           objectFit="contain"
         />
@@ -68,7 +68,7 @@ function StartingPageContent() {
           alt=""
           title=""
           width="100%"
-          height="40rem"
+          height="35rem"
           layout="responsive"
           objectFit="contain"
         />
