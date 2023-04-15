@@ -84,74 +84,83 @@ function StartingPageContent() {
       </div>
       <div className={classes.lessonCardsWrapper}>
         <div className={classes.lessonCard}>
-          <Image
-            src={icon01}
-            alt=""
-            title=""
-            width="100%"
-            height="100%"
-            layout="responsive"
-            objectFit="contain"
-          />
-          <p>
+          <div className={classes.imgContainer}>
+            <Image
+              src={icon01}
+              alt=""
+              title=""
+              width="100%"
+              height="100%"
+              layout="responsive"
+              objectFit="contain"
+            />
+          </div>
+          <div className={classes.cardText}>
             <span className={classes.lessonName}>Уроки Развития речи</span> —
             учим ребят красиво и грамотно излагать свои мысли. Занятия проходят
             интересно , используются и элементы сценического искусства. Каждый
             месяц новые блоки авторских тем, которые уносят в мир
             науки,искусства, географии, космоса. Всё это помогает расширять
             лексику и даёт возможность её использовать.
-          </p>
+          </div>
         </div>
+
         <div className={classes.lessonCard}>
-          <Image
-            src={icon02}
-            alt=""
-            title=""
-            width="100%"
-            height="100%"
-            layout="responsive"
-            objectFit="contain"
-          />
-          <p>
+          <div className={classes.imgContainer}>
+            <Image
+              src={icon02}
+              alt=""
+              title=""
+              width="100%"
+              height="100%"
+              layout="responsive"
+              objectFit="contain"
+            />
+          </div>
+          <div className={classes.cardText}>
             <span className={classes.lessonName}>Уроки Музыки</span> гармонично
             развивают язык, дикцию, способствуют развитию произносительной
             стороны речи. Также подготавливают ребят чувствовать себя уверенными
             на выступлениях. Подготовка тематических песен к праздникам
             проводится профессиональным учителем музыки.
-          </p>
+          </div>
         </div>
         <div className={classes.lessonCard}>
-          <Image
-            src={icon03}
-            alt=""
-            title=""
-            width="100%"
-            height="100%"
-            layout="responsive"
-            objectFit="contain"
-          />
-          <p>
+          <div className={classes.imgContainer}>
+            <Image
+              src={icon03}
+              alt=""
+              title=""
+              width="100%"
+              height="100%"
+              layout="responsive"
+              objectFit="contain"
+            />
+          </div>
+          <div className={classes.cardText}>
             <span className={classes.lessonName}>Русский язык.</span> Работаем
             над письменной речью. Обучаем чтению, письму, используем презентации
             и творческие проекты. Учим русский интересно.
-          </p>
+          </div>
         </div>
         <div className={classes.lessonCard}>
-          <Image
-            src={icon04}
-            alt=""
-            title=""
-            width="100%"
-            height="100%"
-            layout="responsive"
-            objectFit="contain"
-          />
-          <p>
+          <div className={classes.imgContainer}>
+            <Image
+              src={icon04}
+              alt=""
+              title=""
+              width="100%"
+              height="100%"
+              layout="responsive"
+              objectFit="contain"
+            />
+          </div>
+          <div className={classes.cardText}>
             <span className={classes.lessonName}>Литература.</span> Растим
             увлеченных читателей. Библиотека школы "Колибри" доступна ученикам
             школы, книжные клубы, читательские дневники, карты историй - все для
             интересного и увлекательного чтения.
-          </p>
+          </div>
         </div>
       </div>
       <div className={classes.lessonsSubTitle}>
