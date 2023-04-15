@@ -4,9 +4,70 @@
   font-size: 1.4rem;
   max-width: 80rem;
   margin: auto;
-  padding: 1rem;
 }
 
-.paragraph {
+.title {
+  font-family: "Balsamiq Sans", cursive;
+  text-align: center;
+  color: rgb(25, 32, 58);
+  font-size: 3rem;
+  margin: 2rem 0;
+}
+
+.lessonsTitle {
+  text-align: center;
+  font-family: "Rubik Marker Hatch", cursive;
+  font-size: 2.5rem;
+  color: rgb(66, 80, 135);
   margin: 1rem 0;
+}
+
+.lessonsSubTitle {
+  font-family: "Pangolin", cursive;
+  margin: 0 2rem;
+  text-indent: 3rem;
+  font-size: 1.6rem;
+}
+
+.lessonCardsWrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.lessonCard {
+  display: flex;
+  flex-direction: column;
+  max-width: 25rem;
+  padding: 1rem;
+  background-color: aliceblue;
+  border-radius: 2rem;
+  margin: 0.5rem;
+}
+
+.lessonName {
+  font-family: "Rubik Marker Hatch", cursive;
+}
+
+.constactInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.imageContacts {
+  width: 6rem;
+  margin: 1rem;
+}
+
+.lessonsFootNote {
+  font-family: "Pangolin", cursive;
+  text-align: center;
+  margin: 0 2rem;
+  font-size: 2rem;
+  margin-bottom: 2rem;
 }

@@ -1,6 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Balsamiq+Sans&family=Caveat:wght@500&family=Commissioner:wght@500&family=Cormorant+Infant:wght@500&family=Pacifico&family=Pangolin&family=Rubik+Dirt&family=Rubik+Marker+Hatch&family=Russo+One&family=Sofia+Sans+Condensed:wght@500&display=swap");
+
 .main {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  font-family: "Lato", sans-serif;
+  font-family: "Sofia Sans Condensed", sans-serif;
+  color: rgb(25, 32, 58);
 }
+
+/* font-family: 'Amatic SC', cursive;
+font-family: 'Balsamiq Sans', cursive;
+font-family: 'Caveat', cursive;
+font-family: 'Commissioner', sans-serif;
+font-family: 'Cormorant Infant', serif;
+font-family: 'Pacifico', cursive;
+font-family: 'Pangolin', cursive;
+font-family: 'Rubik Dirt', cursive;
+font-family: 'Rubik Marker Hatch', cursive;
+font-family: 'Russo One', sans-serif;
+font-family: 'Sofia Sans Condensed', sans-serif; */
