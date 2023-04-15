@@ -23,7 +23,7 @@ function StartingPageContent() {
           alt=""
           title=""
           width="100%"
-          height="30rem"
+          height="40rem"
           layout="responsive"
           objectFit="contain"
         />
@@ -32,7 +32,7 @@ function StartingPageContent() {
           alt=""
           title=""
           width="100%"
-          height="30rem"
+          height="40rem"
           layout="responsive"
           objectFit="contain"
         />
@@ -41,7 +41,7 @@ function StartingPageContent() {
           alt=""
           title=""
           width="100%"
-          height="30rem"
+          height="40rem"
           layout="responsive"
           objectFit="contain"
         />
@@ -50,7 +50,7 @@ function StartingPageContent() {
           alt=""
           title=""
           width="100%"
-          height="30rem"
+          height="40rem"
           layout="responsive"
           objectFit="contain"
         />
@@ -59,7 +59,7 @@ function StartingPageContent() {
           alt=""
           title=""
           width="100%"
-          height="30rem"
+          height="40rem"
           layout="responsive"
           objectFit="contain"
         />
@@ -68,7 +68,7 @@ function StartingPageContent() {
           alt=""
           title=""
           width="100%"
-          height="30rem"
+          height="40rem"
           layout="responsive"
           objectFit="contain"
         />
@@ -221,7 +221,7 @@ function StartingPageContent() {
           />
         </div>
         <div>
-          <div>Директор шлолы Светлана Сачик</div>
+          <div>Директор школы Светлана Сачик</div>
           <div>тел.: (403)614-0284</div>
           <div>емэйл: sachyk81@hotmail.com</div>
         </div>
