@@ -43,10 +43,10 @@ export const UpdateBookForm = (props) => {
     })
   );
 
-  students.map((student) =>
+  students.map((student, index) =>
     studentList.push({
-      value: student.emailAddress,
-      label: student.studentName,
+      value: student._id,
+      label: `${index}. ${student.studentName}`,
     })
   );
 

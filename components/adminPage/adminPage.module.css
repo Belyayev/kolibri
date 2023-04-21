@@ -5,6 +5,7 @@
   justify-content: center;
   padding: 1rem;
   flex-wrap: wrap;
+  margin-bottom: 2rem;
 }
 
 .adminTitle {
@@ -26,6 +27,7 @@
   border-radius: 1rem;
   max-width: 38rem;
   margin-bottom: 2rem;
+  padding-bottom: 1rem;
 }
 
 .addBookTitle {
@@ -102,4 +104,25 @@
   padding: 0.5rem;
   border-radius: 0.5rem;
   border: none;
+}
+
+.studentListItem {
+  display: flex;
+  padding: 0.2rem 0.5rem;
+  margin: 0.3rem;
+  background-color: white;
+  border-radius: 0.5rem;
+}
+
+.studentName {
+  width: 40%;
+}
+
+.studentEmail {
+  width: 40%;
+}
+
+.studentPhone {
+  width: 20%;
+  text-align: right;
 }

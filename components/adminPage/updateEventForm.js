@@ -4,9 +4,9 @@ import classes from "./adminPage.module.css";
 
 const { TextArea } = Input;
 
-export const UpdateStudentForm = (props) => {
-  async function getStudents() {
-    const response = await fetch("/api/students/getStudents", {
+export const UpdateEventForm = (props) => {
+  async function getEvents() {
+    const response = await fetch("/api/events/getEvents", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -16,43 +16,44 @@ export const UpdateStudentForm = (props) => {
     const data = await response.json();
     return data;
   }
-  const [students, setStudents] = useState([]);
-  const [selectedStudent, setSelectedStudent] = useState({});
-  let studentList = [];
-  students.map((student, index) =>
-    studentList.push({
-      value: student._id,
-      label: `${index}. ${student.studentName}`,
+  const [events, setEvents] = useState([]);
+  const [selectedEvent, setSelectedEvent] = useState({});
+  let eventList = [];
+  events.map((event, index) =>
+    eventList.push({
+      value: event._id,
+      label: `${index}. ${event.eventName}`,
     })
   );
 
   useEffect(() => {
-    getStudents().then((data) => setStudents(data));
+    getEvents().then((data) => setEvents(data));
   }, []);
 
   const [form] = Form.useForm();
 
   function submitHandler(values) {
-    const { _id, studentName, phoneNumber, emailAddress, notes } = values;
+    const { _id, eventName, eventDate, eventDescription } = values;
 
-    props.onUpdateStudent({
+    props.onUpdateEvent({
       _id,
-      studentName,
-      phoneNumber,
-      emailAddress,
-      notes,
+      eventName: eventName,
+      eventDate: eventDate,
+      eventDescription: eventDescription,
     });
     form.resetFields();
   }
 
   const onChange = (value) => {
-    form.setFieldsValue(students.filter((student) => student._id === value)[0]);
-    setSelectedStudent(students.filter((student) => student._id === value)[0]);
+    form.setFieldsValue(events.filter((event) => event._id === value)[0]);
+    setSelectedEvent(events.filter((event) => event._id === value)[0]);
   };
 
   return (
     <div className={classes.addBookWrapper}>
-      <div className={classes.addBookTitle}>Редактировать Студента</div>
+      <div className={classes.addBookTitle}>
+        Редактировать Запись в Календаре
+      </div>
       <Form
         form={form}
         labelCol={{ span: 4 }}
@@ -64,30 +65,27 @@ export const UpdateStudentForm = (props) => {
         <Form.Item label="ID" name="_id">
           <Input disabled />
         </Form.Item>
-        <Form.Item label="Студент">
+        <Form.Item label="Запись">
           <Select
             allowClear
             showSearch
             onChange={onChange}
-            placeholder="Выберете студента для редактирования"
-            options={studentList}
+            placeholder="Выберете запись для редактирования"
+            options={eventList}
             filterOption={(input, option) =>
               (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
             }
           >
-            Имя студента
+            Название записи
           </Select>
         </Form.Item>
-        <Form.Item label="Имя" name="studentName">
+        <Form.Item label="Название" name="eventName">
           <Input />
         </Form.Item>
-        <Form.Item label="Телефон" name="phoneNumber">
-          <Input />
+        <Form.Item label="Дата" name="eventDate">
+          <input className={classes.datePicker} type="date" />
         </Form.Item>
-        <Form.Item label="Е-мэйл" name="emailAddress">
-          <Input />
-        </Form.Item>
-        <Form.Item label="Отметки" name="notes">
+        <Form.Item label="Детали" name="eventDescription">
           <TextArea rows={4} />
         </Form.Item>
         <Form.Item className={classes.formRow}>
@@ -95,11 +93,11 @@ export const UpdateStudentForm = (props) => {
             type="default"
             className={classes.deleteBook}
             onClick={() => {
-              props.onDeleteStudent(selectedStudent._id);
+              props.onDeleteEvent(selected._id);
               form.resetFields();
             }}
           >
-            Удалить Студента
+            Удалить Запись
           </Button>
           <Button type="primary" htmlType="submit">
             Обновить
