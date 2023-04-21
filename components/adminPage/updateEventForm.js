@@ -93,7 +93,7 @@ export const UpdateEventForm = (props) => {
             type="default"
             className={classes.deleteBook}
             onClick={() => {
-              props.onDeleteEvent(selected._id);
+              props.onDeleteEvent(selectedEvent._id);
               form.resetFields();
             }}
           >

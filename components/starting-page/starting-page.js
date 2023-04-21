@@ -1,3 +1,5 @@
+import React, { useEffect, useState } from "react";
+import moment from "moment";
 import Image from "next/image";
 import { Carousel } from "antd";
 import classes from "./starting-page.module.css";
@@ -14,6 +16,24 @@ import photo05 from "../../Images/Photo05.png";
 import photo06 from "../../Images/Photo06.png";
 
 function StartingPageContent() {
+  async function getEvents() {
+    const response = await fetch("/api/events/getEvents", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+      },
+    });
+
+    const data = await response.json();
+    return data;
+  }
+
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    getEvents().then((data) => setEvents(data));
+  }, []);
+
   return (
     <div className={classes.section}>
       <div className={classes.title}>Школа Русского языка“Колибри”</div>
@@ -77,6 +97,26 @@ function StartingPageContent() {
         Наша школа ведёт свою работу по разным направлениям, но объединяет одну
         идею - развитие и поддержание языка и традиций!!!
       </div>
+      {events.length > 0 && (
+        <>
+          <div className={classes.lessonsTitle}>Календарь школы</div>
+          {events.map((event) => (
+            <div key={event._id} className={classes.calendarItem}>
+              <div>
+                <span className={classes.calendarItemDate}>
+                  {moment(event.eventDate).format("DD MMM, YYYY")}
+                </span>
+                <span className={classes.calendarItemName}>
+                  {event.eventName}
+                </span>
+              </div>
+              <div className={classes.calendarItemDescription}>
+                {event.eventDescription}
+              </div>
+            </div>
+          ))}
+        </>
+      )}
       <div className={classes.lessonsTitle}>Наши уроки</div>
       <div className={classes.lessonsSubTitle}>
         Все предметы нашей программы входят в один блок по субботам. Музыка

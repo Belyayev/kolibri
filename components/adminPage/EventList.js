@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import moment from "moment";
 import classes from "./adminPage.module.css";
 
 export const EventList = () => {
@@ -22,10 +23,16 @@ export const EventList = () => {
   return (
     <div className={classes.addBookWrapper}>
       {events.map((event) => (
-        <div className={classes.studentListItem} key={event._id}>
-          <div className={classes.studentEmail}>{event.eventDate}</div>
-          <div className={classes.studentName}>{event.eventName}</div>
-          <div className={classes.studentPhone}>{event.eventDescription}</div>
+        <div className={classes.eventListItem} key={event._id}>
+          <div>
+            <span className={classes.eventDate}>
+              {moment(event.eventDate).format("DD MMM, YYYY")}
+            </span>
+            <span className={classes.eventName}>{event.eventName}</span>
+          </div>
+          <div className={classes.eventDescription}>
+            {event.eventDescription}
+          </div>
         </div>
       ))}
     </div>

@@ -126,3 +126,26 @@
   width: 20%;
   text-align: right;
 }
+
+.eventListItem {
+  display: flex;
+  flex-direction: column;
+  padding: 0.2rem 0.5rem;
+  margin: 0.3rem;
+  background-color: white;
+  border-radius: 0.5rem;
+}
+
+.eventDate {
+  font-weight: bold;
+  margin-right: 0.8rem;
+}
+
+.eventName {
+  font-size: 1.2rem;
+}
+
+.eventDescription {
+  margin-left: 6rem;
+  color: blue;
+}

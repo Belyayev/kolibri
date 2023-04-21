@@ -84,3 +84,26 @@
   font-size: 2rem;
   margin-bottom: 2rem;
 }
+
+.calendarItem {
+  display: flex;
+  flex-direction: column;
+  border-bottom: solid 1px gray;
+  background-color: white;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.calendarItemDate {
+  margin-right: 0.8rem;
+  font-weight: bold;
+}
+
+.calendarItemName {
+}
+
+.calendarItemDescription {
+  margin-left: 6.7rem;
+  color: rgb(66, 80, 135);
+}
