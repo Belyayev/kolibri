@@ -33,12 +33,21 @@ export const UpdateEventForm = (props) => {
   const [form] = Form.useForm();
 
   function submitHandler(values) {
-    const { _id, eventName, eventDate, eventDescription } = values;
+    const {
+      _id,
+      eventName,
+      eventDate,
+      eventTime,
+      eventImageLink,
+      eventDescription,
+    } = values;
 
     props.onUpdateEvent({
       _id,
       eventName: eventName,
       eventDate: eventDate,
+      eventTime: eventTime,
+      eventImageLink: eventImageLink,
       eventDescription: eventDescription,
     });
     form.resetFields();
@@ -85,8 +94,14 @@ export const UpdateEventForm = (props) => {
         <Form.Item label="Дата" name="eventDate">
           <input className={classes.datePicker} type="date" />
         </Form.Item>
+        <Form.Item label="Время" name="eventTime">
+          <Input placeholder="с 12:00 до 15:30" />
+        </Form.Item>
         <Form.Item label="Детали" name="eventDescription">
           <TextArea rows={4} />
+        </Form.Item>
+        <Form.Item label="Изображение" name="eventImageLink">
+          <Input placeholder="Картинка по умолчанию если не заполнено" />
         </Form.Item>
         <Form.Item className={classes.formRow}>
           <Button

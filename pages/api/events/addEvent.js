@@ -8,7 +8,8 @@ async function addEvent(req, res) {
 
   const data = req.body;
 
-  const { eventName, eventDate, eventDescription } = data;
+  const { eventName, eventDate, eventTime, eventImageLink, eventDescription } =
+    data;
 
   if (!eventName) {
     res.status(422).json({
@@ -50,6 +51,8 @@ async function addEvent(req, res) {
   const result = await db.collection("events").insertOne({
     eventName: eventName,
     eventDate: eventDate,
+    eventTime: eventTime,
+    eventImageLink: eventImageLink,
     eventDescription: eventDescription,
   });
 

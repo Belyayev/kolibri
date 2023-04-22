@@ -87,12 +87,13 @@
 
 .calendarItem {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   border-bottom: solid 1px gray;
   background-color: white;
   margin: 0.5rem;
   padding: 0.5rem;
   border-radius: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .calendarItemDate {
@@ -100,10 +101,21 @@
   font-weight: bold;
 }
 
-.calendarItemName {
+.eventTitle {
+  font-size: 2rem;
+}
+
+.eventText {
+  max-width: 65rem;
 }
 
 .calendarItemDescription {
-  margin-left: 6.7rem;
   color: rgb(66, 80, 135);
+}
+
+.eventImgContainer {
+  width: 10rem;
+  max-width: 10rem;
+  min-width: 10rem;
+  margin-right: 1rem;
 }

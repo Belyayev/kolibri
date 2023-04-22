@@ -100,21 +100,39 @@ function StartingPageContent() {
       {events.length > 0 && (
         <>
           <div className={classes.lessonsTitle}>Календарь школы</div>
-          {events.map((event) => (
-            <div key={event._id} className={classes.calendarItem}>
-              <div>
-                <span className={classes.calendarItemDate}>
-                  {moment(event.eventDate).format("DD MMM, YYYY")}
-                </span>
-                <span className={classes.calendarItemName}>
-                  {event.eventName}
-                </span>
+          {events.map((event) => {
+            let imageLink = event.eventImageLink;
+            if (!event.eventImageLink || event.eventImageLink === "") {
+              imageLink = "https://imgtr.ee/images/2023/04/21/0fSm7.png";
+            }
+            return (
+              <div key={event._id} className={classes.calendarItem}>
+                <div className={classes.eventImgContainer}>
+                  <Image
+                    src={imageLink}
+                    alt=""
+                    title=""
+                    width="100%"
+                    height="100%"
+                    layout="responsive"
+                    objectFit="contain"
+                  />
+                </div>
+                <div className={classes.eventText}>
+                  <div>
+                    <span className={classes.calendarItemDate}>
+                      {moment(event.eventDate).format("DD MMM, YYYY")}
+                    </span>
+                    <span>{event.eventTime}</span>
+                  </div>
+                  <div className={classes.eventTitle}>{event.eventName}</div>
+                  <div className={classes.calendarItemDescription}>
+                    {event.eventDescription}
+                  </div>
+                </div>
               </div>
-              <div className={classes.calendarItemDescription}>
-                {event.eventDescription}
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </>
       )}
       <div className={classes.lessonsTitle}>Наши уроки</div>

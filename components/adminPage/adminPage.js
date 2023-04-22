@@ -110,10 +110,10 @@ function AdminPage() {
     return data;
   }
 
-  async function updateEventHandler(studentData) {
+  async function updateEventHandler(eventData) {
     const response = await fetch("/api/events/updateEvent", {
       method: "PATCH",
-      body: JSON.stringify(studentData),
+      body: JSON.stringify(eventData),
       headers: {
         "Content-Type": "application/json",
       },

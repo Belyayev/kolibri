@@ -8,7 +8,14 @@ async function updateEvent(req, res) {
 
   const data = req.body;
 
-  const { _id, eventName, eventDate, eventDescription } = data;
+  const {
+    _id,
+    eventName,
+    eventDate,
+    eventTime,
+    eventImageLink,
+    eventDescription,
+  } = data;
 
   if (!eventName) {
     res.status(422).json({
@@ -42,6 +49,8 @@ async function updateEvent(req, res) {
       $set: {
         eventName: eventName,
         eventDate: eventDate,
+        eventTime: eventTime,
+        eventImageLink: eventImageLink,
         eventDescription: eventDescription,
       },
     }
