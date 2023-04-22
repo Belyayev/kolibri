@@ -85,7 +85,7 @@
   margin-bottom: 2rem;
 }
 
-.calendarItem {
+.eventItem {
   display: flex;
   flex-direction: row;
   border-bottom: solid 1px gray;
@@ -96,7 +96,7 @@
   flex-wrap: wrap;
 }
 
-.calendarItemDate {
+.eventDate {
   margin-right: 0.8rem;
   font-weight: bold;
 }
@@ -109,7 +109,7 @@
   max-width: 65rem;
 }
 
-.calendarItemDescription {
+.eventDescription {
   color: rgb(66, 80, 135);
 }
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
+import Image from "next/image";
 import classes from "./adminPage.module.css";
 
 export const EventList = () => {
@@ -22,19 +23,39 @@ export const EventList = () => {
 
   return (
     <div className={classes.addBookWrapper}>
-      {events.map((event) => (
-        <div className={classes.eventListItem} key={event._id}>
-          <div>
-            <span className={classes.eventDate}>
-              {moment(event.eventDate).format("DD MMM, YYYY")}
-            </span>
-            <span className={classes.eventName}>{event.eventName}</span>
+      {events.map((event) => {
+        let imageLink = event.eventImageLink;
+        if (!event.eventImageLink || event.eventImageLink === "") {
+          imageLink = "https://imgtr.ee/images/2023/04/21/0fSm7.png";
+        }
+        return (
+          <div key={event._id} className={classes.eventItem}>
+            <div className={classes.eventImgContainer}>
+              <Image
+                src={imageLink}
+                alt=""
+                title=""
+                width="100%"
+                height="100%"
+                layout="responsive"
+                objectFit="contain"
+              />
+            </div>
+            <div className={classes.eventText}>
+              <div>
+                <span className={classes.eventDate}>
+                  {moment(event.eventDate).format("DD MMM, YYYY")}
+                </span>
+                <span>{event.eventTime}</span>
+              </div>
+              <div className={classes.eventTitle}>{event.eventName}</div>
+              <div className={classes.eventDescription}>
+                {event.eventDescription}
+              </div>
+            </div>
           </div>
-          <div className={classes.eventDescription}>
-            {event.eventDescription}
-          </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 };

@@ -164,7 +164,7 @@ function AdminPage() {
     },
     {
       key: "2",
-      label: `Редактировать Студента`,
+      label: `Редактировать`,
       children: (
         <UpdateStudentForm
           onUpdateStudent={updateStudentHandler}
@@ -174,7 +174,7 @@ function AdminPage() {
     },
     {
       key: "3",
-      label: `Список Студентов`,
+      label: `Список`,
       children: <StudentList />,
     },
   ];
@@ -187,7 +187,7 @@ function AdminPage() {
     },
     {
       key: "2",
-      label: `Редактировать запись`,
+      label: `Редактировать`,
       children: (
         <UpdateEventForm
           onUpdateEvent={updateEventHandler}
@@ -197,7 +197,7 @@ function AdminPage() {
     },
     {
       key: "3",
-      label: `Список записей`,
+      label: `Список`,
       children: <EventList />,
     },
   ];

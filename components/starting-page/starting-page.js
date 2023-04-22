@@ -106,7 +106,7 @@ function StartingPageContent() {
               imageLink = "https://imgtr.ee/images/2023/04/21/0fSm7.png";
             }
             return (
-              <div key={event._id} className={classes.calendarItem}>
+              <div key={event._id} className={classes.eventItem}>
                 <div className={classes.eventImgContainer}>
                   <Image
                     src={imageLink}
@@ -120,13 +120,13 @@ function StartingPageContent() {
                 </div>
                 <div className={classes.eventText}>
                   <div>
-                    <span className={classes.calendarItemDate}>
+                    <span className={classes.eventDate}>
                       {moment(event.eventDate).format("DD MMM, YYYY")}
                     </span>
                     <span>{event.eventTime}</span>
                   </div>
                   <div className={classes.eventTitle}>{event.eventName}</div>
-                  <div className={classes.calendarItemDescription}>
+                  <div className={classes.eventDescription}>
                     {event.eventDescription}
                   </div>
                 </div>

@@ -112,40 +112,53 @@
   margin: 0.3rem;
   background-color: white;
   border-radius: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .studentName {
-  width: 40%;
+  width: 13rem;
 }
 
 .studentEmail {
-  width: 40%;
+  width: 16rem;
 }
 
 .studentPhone {
-  width: 20%;
-  text-align: right;
+  width: 6rem;
 }
 
-.eventListItem {
+.eventItem {
   display: flex;
-  flex-direction: column;
-  padding: 0.2rem 0.5rem;
-  margin: 0.3rem;
+  flex-direction: row;
+  border-bottom: solid 1px gray;
   background-color: white;
+  margin: 0.5rem;
+  padding: 0.5rem;
   border-radius: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .eventDate {
-  font-weight: bold;
   margin-right: 0.8rem;
+  font-weight: bold;
 }
 
-.eventName {
-  font-size: 1.2rem;
+.eventTitle {
+  font-size: 2rem;
+}
+
+.eventText {
+  max-width: 65rem;
 }
 
 .eventDescription {
-  margin-left: 6rem;
-  color: blue;
+  color: rgb(66, 80, 135);
+}
+
+.eventImgContainer {
+  width: 10rem;
+  max-width: 10rem;
+  min-width: 10rem;
+  margin-right: 1rem;
 }
