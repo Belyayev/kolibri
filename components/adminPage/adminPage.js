@@ -1,16 +1,39 @@
 import React, { useState } from "react";
+import Link from "next/link";
+import { Button, Result } from "antd";
 import { notification, Tabs } from "antd";
 import classes from "./adminPage.module.css";
 import { AddBookForm } from "./addBookForm";
 import { UpdateBookForm } from "./updateBookForm";
 import { AddStudentForm } from "./addStudentForm";
+import { useUser } from "@clerk/nextjs";
 import { UpdateStudentForm } from "./updateStudentForm";
 import { StudentList } from "./StudentList";
 import { AddEventForm } from "./addEventForm";
 import { UpdateEventForm } from "./updateEventForm";
 import { EventList } from "./EventList";
+
 function AdminPage() {
+  const { user } = useUser();
+  const authUserEmail = user.primaryEmailAddress.emailAddress;
   const [alert, setAlert] = useState(null);
+
+  const administrators = ["sachyk81@hotmail.com", "4xgood@gmail.com"];
+
+  if (!administrators.includes(authUserEmail)) {
+    return (
+      <Result
+        status="403"
+        title="НЕТ ДОСТУПА"
+        subTitle="Доступ к этой странице запрещен."
+        extra={
+          <Link passHref href="/">
+            <Button type="primary">Back Home</Button>
+          </Link>
+        }
+      />
+    );
+  }
 
   async function addBookHandler(bookData) {
     const response = await fetch("/api/books/addBook", {

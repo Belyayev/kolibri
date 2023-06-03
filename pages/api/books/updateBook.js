@@ -10,6 +10,7 @@ async function updateBook(req, res) {
   const data = req.body;
 
   const {
+    authUserEmail,
     _id,
     dateBorrowed,
     bookHolder,
@@ -25,6 +26,16 @@ async function updateBook(req, res) {
     res.status(422).json({
       message: "Название книги обязательно",
     });
+    return;
+  }
+
+  const administrators = ["sachyk81@hotmail.com", "4xgood@gmail.com"];
+
+  if (!administrators.includes(authUserEmail)) {
+    res
+      .status(422)
+      .json({ message: "Только администраторы могут добавлять книги" });
+    client.close();
     return;
   }
 
