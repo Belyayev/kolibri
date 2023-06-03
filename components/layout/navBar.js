@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useSession, signOut } from "next-auth/client";
 import { HomeFilled, ReadFilled, LockFilled } from "@ant-design/icons";
+import { UserButton } from "@clerk/nextjs";
 
 import Logo from "../../Images/Logo.png";
 
@@ -62,6 +63,7 @@ function NavBar() {
           )}
           {/* {session && <Link href="/profile">Профиль</Link>} */}
           {session && <button onClick={logoutHandler}>Выйти</button>}
+          <UserButton />
         </div>
       </header>
     </div>
