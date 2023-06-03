@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { Button, Result } from "antd";
-import { notification, Tabs } from "antd";
+import { Button, Result, notification, Tabs } from "antd";
 import classes from "./adminPage.module.css";
 import { AddBookForm } from "./addBookForm";
 import { UpdateBookForm } from "./updateBookForm";

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Image from "next/image";
 import classes from "./books.module.css";
-import { Button, Modal } from "antd";
+import { Button, Modal, notification } from "antd";
+import { useUser } from "@clerk/nextjs";
 
 function BookItem({ props }) {
   const {
@@ -12,7 +13,42 @@ function BookItem({ props }) {
     numberOfPages,
     bookImageLink,
     bookHolder,
+    waitList,
   } = props;
+
+  const [alert, setAlert] = useState(null);
+
+  async function requestBookHandler(bookData) {
+    const response = await fetch("/api/books/requestBook", {
+      method: "PATCH",
+      body: JSON.stringify(bookData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+    setAlert(data.message);
+    return data;
+  }
+
+  async function releaseBookHandler(bookData) {
+    const response = await fetch("/api/books/releaseBook", {
+      method: "PATCH",
+      body: JSON.stringify(bookData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+    setAlert(data.message);
+    return data;
+  }
+
+  const { user } = useUser();
+
+  const authUserEmail = user.primaryEmailAddress.emailAddress;
 
   let link = bookImageLink;
 
@@ -33,22 +69,43 @@ function BookItem({ props }) {
     setIsModalOpen(false);
   };
 
+  let holding = false;
+  if (
+    waitList &&
+    waitList.filter((item) => item.requestedBy === authUserEmail).length > 0
+  ) {
+    holding = true;
+  }
+
   return (
     <>
+      {alert && notification.open({ placement: "topLeft", message: alert })}
       <Modal
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
         footer={[
+          <Button
+            key="submit"
+            type="primary"
+            danger={holding}
+            onClick={() =>
+              holding
+                ? releaseBookHandler({ _id, authUserEmail })
+                : requestBookHandler({ _id, authUserEmail })
+            }
+          >
+            {holding ? "Отказаться" : "Заказать"}
+          </Button>,
           <Button key="back" onClick={handleCancel}>
             Закрыть
           </Button>,
         ]}
       >
-        <div className={classes.bookitem}>
-          <div className={classes.bookTitle}>{bookName}</div>
+        <div className={classes.bookitemModal}>
+          <div className={classes.bookTitleModal}>{bookName}</div>
+
           <Image
-            onClick={showModal}
             src={link}
             alt=""
             title=""
@@ -56,12 +113,11 @@ function BookItem({ props }) {
             height="100%"
             layout="responsive"
             objectFit="contain"
-            style={{ cursor: "pointer" }}
           />
           {bookAuthor && (
             <div className={classes.bookAuthor}>Автор: {bookAuthor}</div>
           )}
-          <div className={classes.bookDescription}>{bookDescription}</div>
+          <div className={classes.bookDescriptionModal}>{bookDescription}</div>
           {bookHolder ? (
             <div className={classes.notAvailable}>Книга на руках</div>
           ) : (

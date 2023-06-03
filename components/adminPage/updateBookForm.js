@@ -46,7 +46,7 @@ export const UpdateBookForm = (props) => {
   students.map((student, index) =>
     studentList.push({
       value: student._id,
-      label: `${index}. ${student.studentName}`,
+      label: `${index}. ${student.studentName} (${student.emailAddress})`,
     })
   );
 
@@ -171,6 +171,17 @@ export const UpdateBookForm = (props) => {
           </Button>
         </Form.Item>
       </Form>
+      <div>
+        {selectedBook.waitList && selectedBook.waitList.length > 0 && (
+          <div>Книгу запросили:</div>
+        )}
+        {selectedBook.waitList &&
+          selectedBook.waitList.map((item) => (
+            <div key={item.requestedBy}>
+              {item.requestedDate} : {item.requestedBy}
+            </div>
+          ))}
+      </div>
     </div>
   );
 };
