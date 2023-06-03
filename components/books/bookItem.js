@@ -15,7 +15,8 @@ function BookItem({ props }) {
   let link = bookImageLink;
 
   if (!bookImageLink || bookImageLink === "") {
-    link = "https://imgtr.ee/images/2023/04/02/Uh9aQ.png";
+    link =
+      "https://github.com/Belyayev/kolibri/blob/main/Images/NoImage.png?raw=true";
   }
   return (
     <div className={classes.bookitem}>
