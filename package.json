@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "engines": {
-    "node": "v16.15.0"
+    "node": "v18.16.0"
   },
   "dependencies": {
     "@ant-design/icons": "^5.0.1",
