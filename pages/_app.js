@@ -1,4 +1,3 @@
-import { Provider } from "next-auth/client";
 import {
   ClerkProvider,
   RedirectToSignIn,
@@ -33,11 +32,9 @@ function MyApp({ Component, pageProps }) {
                   margin: 0;
                 }
               `}</style>
-              <Provider session={pageProps.session}>
-                <Layout>
-                  <Component {...pageProps} />
-                </Layout>
-              </Provider>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
             </div>
           </>
         </SignedIn>
