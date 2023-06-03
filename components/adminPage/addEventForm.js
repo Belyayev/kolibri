@@ -1,10 +1,15 @@
 import React from "react";
 import { Form, Input, Button, InputNumber } from "antd";
 import classes from "./adminPage.module.css";
+import { useUser } from "@clerk/nextjs";
 
 const { TextArea } = Input;
 
 export const AddEventForm = (props) => {
+  const { user } = useUser();
+
+  const authUserEmail = user.primaryEmailAddress.emailAddress;
+
   const [form] = Form.useForm();
   function submitHandler(values) {
     const {
@@ -16,6 +21,7 @@ export const AddEventForm = (props) => {
     } = values;
 
     props.onAddEvent({
+      authUserEmail,
       eventName: eventName,
       eventDate: eventDate,
       eventTime: eventTime,

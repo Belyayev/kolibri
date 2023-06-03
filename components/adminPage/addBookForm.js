@@ -1,11 +1,17 @@
 import React from "react";
 import { Form, Input, Button, InputNumber } from "antd";
 import classes from "./adminPage.module.css";
+import { useUser } from "@clerk/nextjs";
 
 const { TextArea } = Input;
 
 export const AddBookForm = (props) => {
+  const { user } = useUser();
+
+  const authUserEmail = user.primaryEmailAddress.emailAddress;
+
   const [form] = Form.useForm();
+
   function submitHandler(values) {
     const {
       bookName,
@@ -16,6 +22,7 @@ export const AddBookForm = (props) => {
     } = values;
 
     props.onAddBook({
+      authUserEmail,
       bookName,
       bookDescription,
       bookAuthor,

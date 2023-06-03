@@ -1,15 +1,21 @@
 import React from "react";
 import { Form, Input, Button, InputNumber } from "antd";
 import classes from "./adminPage.module.css";
+import { useUser } from "@clerk/nextjs";
 
 const { TextArea } = Input;
 
 export const AddStudentForm = (props) => {
+  const { user } = useUser();
+
+  const authUserEmail = user.primaryEmailAddress.emailAddress;
+
   const [form] = Form.useForm();
   function submitHandler(values) {
     const { studentName, phoneNumber, emailAddress, notes } = values;
 
     props.onAddStudent({
+      authUserEmail,
       studentName,
       phoneNumber,
       emailAddress,
