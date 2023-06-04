@@ -37,8 +37,6 @@ function StartingPageContent() {
 
   const { user } = useUser();
 
-  console.log(user.primaryEmailAddress.emailAddress);
-
   return (
     <div className={classes.section}>
       <div className={classes.title}>Школа Русского языка“Колибри”</div>

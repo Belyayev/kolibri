@@ -48,7 +48,6 @@ function AdminPage() {
   }
 
   async function updateBookHandler(bookData) {
-    console.log("hit in admin page");
     const response = await fetch("/api/books/updateBook", {
       method: "PATCH",
       body: JSON.stringify(bookData),

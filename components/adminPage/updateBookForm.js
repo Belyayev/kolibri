@@ -139,7 +139,6 @@ export const UpdateBookForm = (props) => {
             filterOption={(input, option) =>
               (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
             }
-            onChange={(e) => console.log(e)}
           >
             Имя Студента
           </Select>

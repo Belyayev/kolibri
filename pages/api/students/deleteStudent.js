@@ -8,8 +8,6 @@ async function deleteStudent(req, res) {
 
   const id = req.body._id;
 
-  console.log(id);
-
   const client = await connectToDatabase();
 
   const studentsCollection = client.db().collection("students");

@@ -4,7 +4,6 @@ import { administrators } from "../../../constants";
 import moment from "moment";
 
 async function updateBook(req, res) {
-  console.log("hit update func");
   if (req.method !== "PATCH") {
     return;
   }
@@ -12,7 +11,7 @@ async function updateBook(req, res) {
   const data = req.body;
 
   const {
-    // authUserEmail,
+    authUserEmail,
     _id,
     dateBorrowed,
     bookHolder,
@@ -24,7 +23,6 @@ async function updateBook(req, res) {
     bookImageLink,
   } = data;
 
-  console.log(bookHolder);
   if (!bookName) {
     res.status(422).json({
       message: "Название книги обязательно",
@@ -34,13 +32,13 @@ async function updateBook(req, res) {
 
   const client = await connectToDatabase();
 
-  // if (!administrators.includes(authUserEmail)) {
-  //   res
-  //     .status(422)
-  //     .json({ message: "Только администраторы могут добавлять книги" });
-  //   client.close();
-  //   return;
-  // }
+  if (!administrators.includes(authUserEmail)) {
+    res
+      .status(422)
+      .json({ message: "Только администраторы могут добавлять книги" });
+    client.close();
+    return;
+  }
 
   const booksCollection = client.db().collection("books");
 
