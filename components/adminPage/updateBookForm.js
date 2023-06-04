@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Form, Input, Select, Button, InputNumber } from "antd";
+import { useUser } from "@clerk/nextjs";
 import classes from "./adminPage.module.css";
 
 const { TextArea } = Input;
@@ -36,6 +37,10 @@ export const UpdateBookForm = (props) => {
   let bookList = [];
   let studentList = [];
 
+  const { user } = useUser();
+
+  const authUserEmail = user.primaryEmailAddress.emailAddress;
+
   books.map((book, index) =>
     bookList.push({
       value: book._id,
@@ -45,7 +50,7 @@ export const UpdateBookForm = (props) => {
 
   students.map((student, index) =>
     studentList.push({
-      value: student._id,
+      value: student.emailAddress,
       label: `${index}. ${student.studentName} (${student.emailAddress})`,
     })
   );
@@ -71,6 +76,7 @@ export const UpdateBookForm = (props) => {
     } = values;
 
     props.onUpdateBook({
+      authUserEmail,
       _id,
       dateBorrowed,
       bookHolder,
@@ -133,6 +139,7 @@ export const UpdateBookForm = (props) => {
             filterOption={(input, option) =>
               (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
             }
+            onChange={(e) => console.log(e)}
           >
             Имя Студента
           </Select>

@@ -1,5 +1,7 @@
 import { connectToDatabase } from "../../../lib/db";
 
+import { administrators } from "../../../constants";
+
 async function addEvent(req, res) {
   if (req.method !== "POST") {
     return;
@@ -31,8 +33,6 @@ async function addEvent(req, res) {
   }
 
   const client = await connectToDatabase();
-
-  const administrators = ["sachyk81@hotmail.com", "4xgood@gmail.com"];
 
   if (!administrators.includes(authUserEmail)) {
     res.status(422).json({

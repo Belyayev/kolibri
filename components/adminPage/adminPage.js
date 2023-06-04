@@ -11,13 +11,12 @@ import { StudentList } from "./StudentList";
 import { AddEventForm } from "./addEventForm";
 import { UpdateEventForm } from "./updateEventForm";
 import { EventList } from "./EventList";
+import { administrators } from "../../constants";
 
 function AdminPage() {
   const { user } = useUser();
   const authUserEmail = user.primaryEmailAddress.emailAddress;
   const [alert, setAlert] = useState(null);
-
-  const administrators = ["sachyk81@hotmail.com", "4xgood@gmail.com"];
 
   if (!administrators.includes(authUserEmail)) {
     return (
@@ -49,6 +48,7 @@ function AdminPage() {
   }
 
   async function updateBookHandler(bookData) {
+    console.log("hit in admin page");
     const response = await fetch("/api/books/updateBook", {
       method: "PATCH",
       body: JSON.stringify(bookData),

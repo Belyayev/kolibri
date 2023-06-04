@@ -81,6 +81,7 @@ function BookItem({ props }) {
     <>
       {alert && notification.open({ placement: "topLeft", message: alert })}
       <Modal
+        closable={false}
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
@@ -103,8 +104,10 @@ function BookItem({ props }) {
         ]}
       >
         <div className={classes.bookitemModal}>
+          {bookHolder === authUserEmail && (
+            <div className={classes.iHold}>Данная книга сейчас у меня</div>
+          )}
           <div className={classes.bookTitleModal}>{bookName}</div>
-
           <Image
             src={link}
             alt=""

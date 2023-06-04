@@ -1,4 +1,5 @@
 import { connectToDatabase } from "../../../lib/db";
+import { administrators } from "../../../constants";
 
 async function addStudent(req, res) {
   if (req.method !== "POST") {
@@ -24,8 +25,6 @@ async function addStudent(req, res) {
   }
 
   const client = await connectToDatabase();
-
-  const administrators = ["sachyk81@hotmail.com", "4xgood@gmail.com"];
 
   if (!administrators.includes(authUserEmail)) {
     res

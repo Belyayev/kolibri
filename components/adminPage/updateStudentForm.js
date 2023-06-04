@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Form, Input, Button, Select } from "antd";
 import classes from "./adminPage.module.css";
+import { useUser } from "@clerk/nextjs";
 
 const { TextArea } = Input;
 
@@ -16,6 +17,10 @@ export const UpdateStudentForm = (props) => {
     const data = await response.json();
     return data;
   }
+
+  const { user } = useUser();
+
+  const authUserEmail = user.primaryEmailAddress.emailAddress;
   const [students, setStudents] = useState([]);
   const [selectedStudent, setSelectedStudent] = useState({});
   let studentList = [];
@@ -36,6 +41,7 @@ export const UpdateStudentForm = (props) => {
     const { _id, studentName, phoneNumber, emailAddress, notes } = values;
 
     props.onUpdateStudent({
+      authUserEmail,
       _id,
       studentName,
       phoneNumber,

@@ -106,3 +106,10 @@
   font-family: "Caveat", cursive;
   color: rgb(66, 80, 135);
 }
+
+.iHold {
+  background-color: orange;
+  padding: 0.2rem 1rem;
+  font-weight: bold;
+  border-radius: 1rem;
+}
