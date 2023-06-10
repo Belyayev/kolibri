@@ -4,7 +4,7 @@ import classes from "./books.module.css";
 import { Button, Modal, notification } from "antd";
 import { useUser } from "@clerk/nextjs";
 
-function BookItem({ props }) {
+function BookItem({ props, fetchData }) {
   const {
     _id,
     bookName,
@@ -29,6 +29,7 @@ function BookItem({ props }) {
 
     const data = await response.json();
     setAlert(data.message);
+    fetchData();
     return data;
   }
 
@@ -43,6 +44,7 @@ function BookItem({ props }) {
 
     const data = await response.json();
     setAlert(data.message);
+    fetchData();
     return data;
   }
 

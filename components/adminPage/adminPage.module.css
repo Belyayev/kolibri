@@ -162,3 +162,30 @@
   min-width: 10rem;
   margin-right: 1rem;
 }
+
+.bookToLendWrapper {
+  background-color: white;
+  margin: 0.2rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.bookToLendSubTitle {
+  color: rgb(255, 0, 0);
+}
+
+.bookToLendTitle {
+  font-weight: bold;
+  color: rgb(66, 80, 135);
+}
+
+.bookToLendEmailList {
+  margin-left: 3rem;
+}
+
+.bookToLendItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.3rem;
+}

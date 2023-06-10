@@ -55,10 +55,14 @@ export const UpdateBookForm = (props) => {
     })
   );
 
-  useEffect(() => {
+  const fetchData = React.useCallback(async () => {
     getBooks().then((data) => setBooks(data));
     getStudents().then((data) => setStudents(data));
   }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   const [form] = Form.useForm();
 

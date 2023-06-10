@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Form, Input, Select, Button, InputNumber } from "antd";
 import { useUser } from "@clerk/nextjs";
+import { BookToLend } from ".//bookToLend";
 import classes from "./adminPage.module.css";
-
-const { TextArea } = Input;
 
 async function getBooks() {
   const response = await fetch("/api/books/getBooks", {
@@ -63,10 +62,14 @@ export const LendBookForm = (props) => {
     })
   );
 
-  useEffect(() => {
+  const fetchData = React.useCallback(async () => {
     getBooks().then((data) => setBooks(data));
     getStudents().then((data) => setStudents(data));
   }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
   const [form] = Form.useForm();
 
@@ -98,100 +101,15 @@ export const LendBookForm = (props) => {
     form.resetFields();
   }
 
-  const onChange = (value) => {
-    form.setFieldsValue(books.filter((book) => book._id === value)[0]);
-    setSelectedBook(books.filter((book) => book._id === value)[0]);
-  };
-
   return (
     <div className={classes.addBookWrapper}>
       <div className={classes.addBookTitle}>Список запросов на книги</div>
       {booksWithRequest &&
         booksWithRequest.map((book) => (
           <div key={book._id}>
-            <dpan>[ {book.waitList.length} ] : </dpan>
-            {book.bookName}
+            <BookToLend fetchData={fetchData} book={book} />
           </div>
         ))}
-      {/* <Form
-        form={form}
-        labelCol={{ span: 4 }}
-        wrapperCol={{ span: 20 }}
-        layout="horizontal"
-        style={{ maxWidth: 600 }}
-        onFinish={submitHandler}
-      >
-        <Form.Item label="ID" name="_id">
-          <Input disabled />
-        </Form.Item>
-        <Form.Item label="Книга">
-          <Select
-            allowClear
-            showSearch
-            onChange={onChange}
-            placeholder="Выберете книгу для редактирования"
-            options={bookList}
-            filterOption={(input, option) =>
-              (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
-            }
-          >
-            Название книги
-          </Select>
-        </Form.Item>
-        <Form.Item label="Выдана" name="dateBorrowed">
-          <input
-            className={classes.datePicker}
-            type="date"
-            value={selectedBook.dateBorrowed ? selectedBook.dateBorrowed : ""}
-          />
-        </Form.Item>
-        <Form.Item label="На руках" name="bookHolder">
-          <Select
-            allowClear
-            showSearch
-            placeholder="Имя студента, получившего книгу"
-            options={studentList}
-            filterOption={(input, option) =>
-              (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
-            }
-          >
-            Имя Студента
-          </Select>
-        </Form.Item>
-        <Form.Item label="Название" name="bookName">
-          <Input />
-        </Form.Item>
-        <Form.Item label="Автор" name="bookAuthor">
-          <Input />
-        </Form.Item>
-        <Form.Item label="Страниц" name="numberOfPages">
-          <InputNumber />
-        </Form.Item>
-        <Form.Item label="Описание" name="bookDescription">
-          <TextArea rows={4} />
-        </Form.Item>
-        <Form.Item label="Коммент." name="bookComment">
-          <TextArea rows={4} />
-        </Form.Item>
-        <Form.Item label="Картинка" name="bookImageLink">
-          <Input />
-        </Form.Item>
-        <Form.Item className={classes.formRow}>
-          <Button
-            type="default"
-            className={classes.deleteBook}
-            onClick={() => {
-              props.onDeleteBook(selectedBook._id);
-              form.resetFields();
-            }}
-          >
-            Удалить Книгу
-          </Button>
-          <Button type="primary" htmlType="submit">
-            Обновить
-          </Button>
-        </Form.Item>
-      </Form> */}
       <div>
         {selectedBook.waitList && selectedBook.waitList.length > 0 && (
           <div>Книгу запросили:</div>

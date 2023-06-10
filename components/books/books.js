@@ -1,6 +1,7 @@
 import classes from "./books.module.css";
 import React, { useEffect, useState } from "react";
-import { Input } from "antd";
+import { Input, Switch } from "antd";
+import { useUser } from "@clerk/nextjs";
 import BookItem from "./bookItem";
 
 async function getBooks() {
@@ -17,6 +18,10 @@ async function getBooks() {
 }
 
 function Books() {
+  const { user } = useUser();
+
+  const authUserEmail = user.primaryEmailAddress.emailAddress;
+
   const [books, setBooks] = useState([]);
 
   const onSearch = (text) => {
@@ -34,21 +39,54 @@ function Books() {
 
   const [filteredBooks, setFilteredBooks] = useState([]);
 
-  useEffect(() => {
+  const fetchData = React.useCallback(async () => {
     getBooks().then((data) => {
       setBooks(data);
       setFilteredBooks(data);
     });
   }, []);
 
-  // const onChange = (value) => {
-  //   form.setFieldsValue(books.filter((book) => book._id === value)[0]);
-  //   setSelectedBook(books.filter((book) => book._id === value)[0]);
-  // };
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  const onMyBooksChange = (checked) => {
+    if (checked) {
+      setFilteredBooks(
+        books.filter((book) => book.bookHolder === authUserEmail)
+      );
+    } else {
+      setFilteredBooks(books);
+    }
+  };
+
+  const onFreeBooksChange = (checked) => {
+    if (checked) {
+      setFilteredBooks(books.filter((book) => !book.bookHolder));
+    } else {
+      setFilteredBooks(books);
+    }
+  };
 
   return (
     <div className={classes.booksPage}>
       <div className={classes.booksTitle}>Книги в нашей библиотеке</div>
+      <div>
+        || всего книг: {books.length} || на руках:{" "}
+        {books.filter((book) => book.bookHolder).length} || в листе ожидания:{" "}
+        {
+          books.filter((book) => book.waitList && book.waitList.length > 0)
+            .length
+        }{" "}
+        || свободных:{" "}
+        {books.filter((book) => !book.bookHolder && !book.waitList).length} ||
+      </div>
+      <div>
+        <Switch style={{ margin: "0.5rem" }} onChange={onMyBooksChange} />
+        <span>Показывать только мои книги</span>
+        <Switch style={{ margin: "0.5rem" }} onChange={onFreeBooksChange} />
+        <span>Показывать только свободные книги</span>
+      </div>
       <Input
         allowClear
         onChange={(e) => onSearch(e.target.value)}
@@ -58,7 +96,7 @@ function Books() {
         {filteredBooks &&
           filteredBooks.map((book) => (
             <div key={book._id}>
-              <BookItem props={book} />
+              <BookItem props={book} fetchData={fetchData} />
             </div>
           ))}
       </div>

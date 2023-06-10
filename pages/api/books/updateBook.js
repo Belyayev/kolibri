@@ -50,6 +50,15 @@ async function updateBook(req, res) {
     return;
   }
 
+  let waitList = book.waitList;
+
+  if (bookHolder) {
+    const updatedWaitList = waitList.filter(
+      (item) => item.requestedBy !== bookHolder
+    );
+    waitList = updatedWaitList;
+  }
+
   const result = await booksCollection.updateOne(
     { _id: ObjectId(_id) },
     {
@@ -58,6 +67,7 @@ async function updateBook(req, res) {
         bookHolder,
         bookName,
         bookDescription,
+        waitList,
         bookComments,
         bookAuthor,
         numberOfPages,
