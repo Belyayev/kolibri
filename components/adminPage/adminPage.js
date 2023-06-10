@@ -4,6 +4,7 @@ import { Button, Result, notification, Tabs } from "antd";
 import classes from "./adminPage.module.css";
 import { AddBookForm } from "./addBookForm";
 import { UpdateBookForm } from "./updateBookForm";
+import { LendBookForm } from "./lendBookForm";
 import { AddStudentForm } from "./addStudentForm";
 import { useUser } from "@clerk/nextjs";
 import { UpdateStudentForm } from "./updateStudentForm";
@@ -167,9 +168,19 @@ function AdminPage() {
     },
     {
       key: "2",
-      label: `Редактировать Книгу`,
+      label: `Редактировать`,
       children: (
         <UpdateBookForm
+          onUpdateBook={updateBookHandler}
+          onDeleteBook={deleteBookHandler}
+        />
+      ),
+    },
+    {
+      key: "3",
+      label: `Запросы`,
+      children: (
+        <LendBookForm
           onUpdateBook={updateBookHandler}
           onDeleteBook={deleteBookHandler}
         />
