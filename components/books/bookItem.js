@@ -92,7 +92,11 @@ function BookItem({ props, fetchData }) {
             key="submit"
             type="primary"
             danger={holding}
-            disabled={waitList && waitList.length > 0}
+            disabled={
+              waitList &&
+              waitList.length > 0 &&
+              waitList.find((holder) => holder.emailAddress === authUserEmail)
+            }
             onClick={() =>
               holding
                 ? releaseBookHandler({ _id, authUserEmail })
