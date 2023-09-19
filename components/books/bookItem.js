@@ -126,7 +126,13 @@ function BookItem({ props, fetchData }) {
           {bookHolder ? (
             <div className={classes.notAvailable}>Книга на руках</div>
           ) : (
-            <div className={classes.available}>Книга доступна</div>
+            <div>
+              {waitList && waitList.length > 0 ? (
+                <div className={classes.reserved}>Зарезервирована</div>
+              ) : (
+                <div className={classes.available}>Книга доступна</div>
+              )}
+            </div>
           )}
           {numberOfPages && (
             <div className={classes.pages}>Страниц: {numberOfPages}</div>
@@ -153,7 +159,13 @@ function BookItem({ props, fetchData }) {
         {bookHolder ? (
           <div className={classes.notAvailable}>Книга на руках</div>
         ) : (
-          <div className={classes.available}>Книга доступна</div>
+          <div>
+            {waitList && waitList.length > 0 ? (
+              <div className={classes.reserved}>Зарезервирована</div>
+            ) : (
+              <div className={classes.available}>Книга доступна</div>
+            )}
+          </div>
         )}
         {numberOfPages && (
           <div className={classes.pages}>Страниц: {numberOfPages}</div>

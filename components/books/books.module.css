@@ -78,6 +78,14 @@
   font-family: "Russo One", sans-serif;
 }
 
+.reserved {
+  position: absolute;
+  bottom: 0.2rem;
+  right: 0.5rem;
+  color: rgb(255, 128, 0);
+  font-family: "Russo One", sans-serif;
+}
+
 .notAvailable {
   position: absolute;
   bottom: 0.2rem;
