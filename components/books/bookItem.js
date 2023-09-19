@@ -79,6 +79,8 @@ function BookItem({ props, fetchData }) {
     holding = true;
   }
 
+  console.log(waitList);
+
   return (
     <>
       {alert && notification.open({ placement: "topLeft", message: alert })}
@@ -95,7 +97,7 @@ function BookItem({ props, fetchData }) {
             disabled={
               waitList &&
               waitList.length > 0 &&
-              waitList.find((holder) => holder.emailAddress === authUserEmail)
+              !waitList.find((holder) => holder.requestedBy === authUserEmail)
             }
             onClick={() =>
               holding
