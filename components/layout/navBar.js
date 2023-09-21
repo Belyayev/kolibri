@@ -38,6 +38,7 @@ function NavBar() {
               <span className={classes.navLabel}>Книги</span>
             </div>
           </Link>
+
           {(user.primaryEmailAddress.emailAddress === "4xgood@gmail.com" ||
             user.primaryEmailAddress.emailAddress === "sachyk81@hotmail.com" ||
             user.primaryEmailAddress.emailAddress ===
@@ -49,6 +50,7 @@ function NavBar() {
               </div>
             </Link>
           )}
+
           <UserButton />
         </div>
       </header>

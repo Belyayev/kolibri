@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
-import { useUser } from "@clerk/nextjs";
 import Image from "next/image";
 import { Carousel } from "antd";
 import classes from "./starting-page.module.css";
@@ -34,8 +33,6 @@ function StartingPageContent() {
   useEffect(() => {
     getEvents().then((data) => setEvents(data));
   }, []);
-
-  const { user } = useUser();
 
   return (
     <div className={classes.section}>
