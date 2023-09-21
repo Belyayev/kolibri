@@ -1,6 +1,4 @@
 import Image from "next/image";
-import { LockFilled } from "@ant-design/icons";
-
 import Logo from "../../Images/Logo.png";
 
 import classes from "./main.module.css";

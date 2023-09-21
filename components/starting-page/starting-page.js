@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import React, { useEffect, useState } from "react";
 import moment from "moment";
 import Image from "next/image";
@@ -135,6 +136,53 @@ function StartingPageContent() {
           })}
         </>
       )}
+      <>
+        <div className={classes.lessonsTitle}>
+          Путешествие по странам - видео
+        </div>
+        <div className={classes.videoContainer}>
+          <iframe
+            className={classes.videoItem}
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/feqNzjhpxec?si=i9wGMmNXS5txFbdv"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+          <iframe
+            className={classes.videoItem}
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/9Ua4mAWAgoA?si=fr3Lo6hAmUJDCg1K"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+          <iframe
+            className={classes.videoItem}
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/l-Y2H1hB8hQ?si=sFu717feHPR8Vcdw"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+          <iframe
+            className={classes.videoItem}
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/lOuOx_i8DIc?si=eG0VKQnIBQqbrGSe"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </>
       <div className={classes.lessonsTitle}>Наши уроки</div>
       <div className={classes.lessonsSubTitle}>
         Все предметы нашей программы входят в один блок по субботам. Музыка

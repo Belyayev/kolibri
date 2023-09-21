@@ -119,3 +119,16 @@
   min-width: 10rem;
   margin-right: 1rem;
 }
+
+.videoContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+.videoItem {
+  display: block;
+  margin: 1rem;
+  border-radius: 1rem;
+}
