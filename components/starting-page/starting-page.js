@@ -31,6 +31,9 @@ function StartingPageContent() {
 
   const [events, setEvents] = useState([]);
 
+  const videoWidth = 500;
+  const videoHeight = 280;
+
   useEffect(() => {
     getEvents().then((data) => setEvents(data));
   }, []);
@@ -143,8 +146,8 @@ function StartingPageContent() {
         <div className={classes.videoContainer}>
           <iframe
             className={classes.videoItem}
-            width="560"
-            height="315"
+            width={videoWidth}
+            height={videoHeight}
             src="https://www.youtube.com/embed/feqNzjhpxec?si=i9wGMmNXS5txFbdv"
             title="YouTube video player"
             frameborder="0"
@@ -153,8 +156,8 @@ function StartingPageContent() {
           ></iframe>
           <iframe
             className={classes.videoItem}
-            width="560"
-            height="315"
+            width={videoWidth}
+            height={videoHeight}
             src="https://www.youtube.com/embed/9Ua4mAWAgoA?si=fr3Lo6hAmUJDCg1K"
             title="YouTube video player"
             frameborder="0"
@@ -163,8 +166,8 @@ function StartingPageContent() {
           ></iframe>
           <iframe
             className={classes.videoItem}
-            width="560"
-            height="315"
+            width={videoWidth}
+            height={videoHeight}
             src="https://www.youtube.com/embed/l-Y2H1hB8hQ?si=sFu717feHPR8Vcdw"
             title="YouTube video player"
             frameborder="0"
@@ -173,8 +176,8 @@ function StartingPageContent() {
           ></iframe>
           <iframe
             className={classes.videoItem}
-            width="560"
-            height="315"
+            width={videoWidth}
+            height={videoHeight}
             src="https://www.youtube.com/embed/lOuOx_i8DIc?si=eG0VKQnIBQqbrGSe"
             title="YouTube video player"
             frameborder="0"
