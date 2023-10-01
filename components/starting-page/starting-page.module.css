@@ -2,9 +2,9 @@
   display: flex;
   flex-direction: column;
   font-size: 1.4rem;
+  width: 100%;
   max-width: 80rem;
   margin: auto;
-  padding: 0.5rem;
   margin-bottom: 2rem;
 }
 
@@ -21,13 +21,13 @@
   font-family: "Rubik Marker Hatch", cursive;
   font-size: 2.5rem;
   color: rgb(66, 80, 135);
-  margin: 1rem 0;
 }
 
 .lessonsSubTitle {
   font-family: "Pangolin", cursive;
   text-indent: 3rem;
   font-size: 1.6rem;
+  margin: 0.5rem;
 }
 
 .lessonCardsWrapper {
@@ -65,7 +65,7 @@
   font-family: "Rubik Marker Hatch", cursive;
 }
 
-.constactInfo {
+.contactInfo {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -83,6 +83,11 @@
   margin: 0 2rem;
   font-size: 2rem;
   margin-bottom: 2rem;
+}
+
+.eventsContainer {
+  width: 100%;
+  max-width: 80rem;
 }
 
 .eventItem {
@@ -130,4 +135,17 @@
 .videoItem {
   margin: 1rem;
   border-radius: 1rem;
+}
+
+.developer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  cursor: pointer;
+  padding-right: 0.5rem;
+  color: rgb(66, 80, 135);
+}
+
+.developer:hover {
+  color: rgb(101, 0, 0);
 }

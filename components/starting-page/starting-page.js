@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import moment from "moment";
 import Image from "next/image";
+import { FastForwardOutlined } from "@ant-design/icons";
 import { Carousel } from "antd";
 import classes from "./starting-page.module.css";
 import icon01 from "../../Images/Icon01.png";
@@ -102,7 +103,7 @@ function StartingPageContent() {
         идею - развитие и поддержание языка и традиций!!!
       </div>
       {events.length > 0 && (
-        <>
+        <div className={classes.eventsContainer}>
           <div className={classes.lessonsTitle}>Календарь школы</div>
           {events.map((event) => {
             let imageLink = event.eventImageLink;
@@ -137,9 +138,9 @@ function StartingPageContent() {
               </div>
             );
           })}
-        </>
+        </div>
       )}
-      <>
+      <div className={classes.eventsContainer}>
         <div className={classes.lessonsTitle}>
           Путешествие по странам - видео
         </div>
@@ -185,7 +186,7 @@ function StartingPageContent() {
             allowfullscreen
           ></iframe>
         </div>
-      </>
+      </div>
       <div className={classes.lessonsTitle}>Наши уроки</div>
       <div className={classes.lessonsSubTitle}>
         Все предметы нашей программы входят в один блок по субботам. Музыка
@@ -317,7 +318,7 @@ function StartingPageContent() {
         </li>
       </ul>
       <div className={classes.lessonsTitle}>Контактная информация:</div>
-      <div className={classes.constactInfo}>
+      <div className={classes.contactInfo}>
         <div className={classes.imageContacts}>
           <Image
             src={icon05}
@@ -338,6 +339,17 @@ function StartingPageContent() {
       <div className={classes.lessonsFootNote}>
         Школа "Колибри" - учим Русский язык интересно!!!
       </div>
+      <a
+        style={{ textDecoration: "none" }}
+        target="_blank"
+        href="https://mike.belyayev.vercel.app/"
+        rel="noopener noreferrer"
+      >
+        <div className={classes.developer}>
+          <FastForwardOutlined />
+          страничка разработчика
+        </div>
+      </a>
     </div>
   );
 }
