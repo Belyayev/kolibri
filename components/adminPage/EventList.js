@@ -26,7 +26,8 @@ export const EventList = () => {
       {events.map((event) => {
         let imageLink = event.eventImageLink;
         if (!event.eventImageLink || event.eventImageLink === "") {
-          imageLink = "https://imgtr.ee/images/2023/04/21/0fSm7.png";
+          imageLink =
+            "https://github.com/Belyayev/kolibri/blob/main/Images/calendarPlaceholder.png?raw=true";
         }
         return (
           <div key={event._id} className={classes.eventItem}>

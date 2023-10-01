@@ -4,7 +4,7 @@ import classes from "./books.module.css";
 import { Button, Modal, notification } from "antd";
 import { useUser } from "@clerk/nextjs";
 
-function BookItem({ props, fetchData }) {
+function BookItem({ props, bookCategories, fetchData }) {
   const {
     _id,
     bookName,
@@ -18,6 +18,13 @@ function BookItem({ props, fetchData }) {
   } = props;
 
   const [alert, setAlert] = useState(null);
+
+  let categoryName = "";
+  if (bookCategories.find((category) => category._id === bookCategory)) {
+    categoryName = bookCategories.find(
+      (category) => category._id === bookCategory
+    ).bookCategory;
+  }
 
   async function requestBookHandler(bookData) {
     const response = await fetch("/api/books/requestBook", {
@@ -80,8 +87,6 @@ function BookItem({ props, fetchData }) {
     holding = true;
   }
 
-  console.log(waitList);
-
   return (
     <>
       {alert && notification.open({ placement: "topLeft", message: alert })}
@@ -130,6 +135,9 @@ function BookItem({ props, fetchData }) {
           {bookAuthor && (
             <div className={classes.bookAuthor}>Автор: {bookAuthor}</div>
           )}
+          {categoryName !== "" && (
+            <div className={classes.bookAuthor}>Категория: {categoryName}</div>
+          )}
           <div className={classes.bookDescriptionModal}>{bookDescription}</div>
           {bookHolder ? (
             <div className={classes.notAvailable}>Книга на руках</div>
@@ -149,7 +157,7 @@ function BookItem({ props, fetchData }) {
       </Modal>
       <div className={classes.bookitem}>
         <div className={classes.bookTitle}>{bookName}</div>
-        <div className={classes.bookCategory}>категория: {bookCategory}</div>
+        <div className={classes.bookCategory}>{categoryName}</div>
         <Image
           onClick={showModal}
           src={link}
@@ -164,6 +172,7 @@ function BookItem({ props, fetchData }) {
         {bookAuthor && (
           <div className={classes.bookAuthor}>Автор: {bookAuthor}</div>
         )}
+
         <div className={classes.bookDescription}>{bookDescription}</div>
 
         {bookHolder ? (

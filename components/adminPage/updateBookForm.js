@@ -17,6 +17,18 @@ async function getBooks() {
   return data;
 }
 
+async function getBookCategories() {
+  const response = await fetch("/api/bookCategories/getBookCategories", {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+    },
+  });
+
+  const data = await response.json();
+  return data;
+}
+
 async function getStudents() {
   const response = await fetch("/api/students/getStudents", {
     method: "GET",
@@ -32,40 +44,12 @@ async function getStudents() {
 export const UpdateBookForm = (props) => {
   const [books, setBooks] = useState([]);
   const [students, setStudents] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [selectedBook, setSelectedBook] = useState({});
 
   let bookList = [];
   let studentList = [];
-  const bookCategories = [
-    {
-      value: 1,
-      label: "Энциклопедии",
-    },
-    {
-      value: 2,
-      label: "Для младшего возраста",
-    },
-    {
-      value: 3,
-      label: "Для младшего школьного возраста (6-8 лет)",
-    },
-    {
-      value: 4,
-      label: "Для школьников (9-11 лет)",
-    },
-    {
-      value: 5,
-      label: "Для старшего школьного возраста",
-    },
-    {
-      value: 6,
-      label: "Для родителей",
-    },
-    {
-      value: 7,
-      label: "Учебные пособия",
-    },
-  ];
+  let bookCategoriesList = [];
 
   const { user } = useUser();
 
@@ -85,9 +69,17 @@ export const UpdateBookForm = (props) => {
     })
   );
 
+  categories.map((category, index) =>
+    bookCategoriesList.push({
+      value: category._id,
+      label: `${index}. ${category.bookCategory} `,
+    })
+  );
+
   const fetchData = React.useCallback(async () => {
     getBooks().then((data) => setBooks(data));
     getStudents().then((data) => setStudents(data));
+    getBookCategories().then((data) => setCategories(data));
   }, []);
 
   useEffect(() => {
@@ -164,7 +156,7 @@ export const UpdateBookForm = (props) => {
             allowClear
             showSearch
             placeholder="Выберете категорию"
-            options={bookCategories}
+            options={bookCategoriesList}
             filterOption={(input, option) =>
               (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
             }
