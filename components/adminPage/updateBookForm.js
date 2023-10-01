@@ -36,6 +36,36 @@ export const UpdateBookForm = (props) => {
 
   let bookList = [];
   let studentList = [];
+  const bookCategories = [
+    {
+      value: 1,
+      label: "Энциклопедии",
+    },
+    {
+      value: 2,
+      label: "Для младшего возраста",
+    },
+    {
+      value: 3,
+      label: "Для младшего школьного возраста (6-8 лет)",
+    },
+    {
+      value: 4,
+      label: "Для школьников (9-11 лет)",
+    },
+    {
+      value: 5,
+      label: "Для старшего школьного возраста",
+    },
+    {
+      value: 6,
+      label: "Для родителей",
+    },
+    {
+      value: 7,
+      label: "Учебные пособия",
+    },
+  ];
 
   const { user } = useUser();
 
@@ -72,6 +102,7 @@ export const UpdateBookForm = (props) => {
       dateBorrowed,
       bookHolder,
       bookName,
+      bookCategory,
       bookAuthor,
       numberOfPages,
       bookDescription,
@@ -85,6 +116,7 @@ export const UpdateBookForm = (props) => {
       dateBorrowed,
       bookHolder,
       bookName,
+      bookCategory,
       bookDescription,
       bookComment,
       bookAuthor,
@@ -126,6 +158,17 @@ export const UpdateBookForm = (props) => {
           >
             Название книги
           </Select>
+        </Form.Item>
+        <Form.Item label="Категория" name="bookCategory">
+          <Select
+            allowClear
+            showSearch
+            placeholder="Выберете категорию"
+            options={bookCategories}
+            filterOption={(input, option) =>
+              (option?.label ?? "").toLowerCase().includes(input.toLowerCase())
+            }
+          />
         </Form.Item>
         <Form.Item label="Выдана" name="dateBorrowed">
           <input

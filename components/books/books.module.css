@@ -4,7 +4,7 @@
   flex-direction: column;
   max-width: 80rem;
   margin: 0 auto;
-  margin-bottom: 2rem;
+  margin: 0.5rem;
 }
 
 .booksTitle {
@@ -41,6 +41,20 @@
 .bookTitle {
   font-size: 1.1rem;
   font-family: "Russo One", sans-serif;
+  color: rgb(66, 80, 135);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bookCategory {
+  width: 15rem;
+  transform: rotate(270deg);
+  position: absolute;
+  left: -7rem;
+  top: 10.5rem;
+  font-size: 1rem;
+  font-family: "Vollkorn", serif;
   color: rgb(66, 80, 135);
   white-space: nowrap;
   overflow: hidden;

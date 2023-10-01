@@ -8,6 +8,7 @@ function BookItem({ props, fetchData }) {
   const {
     _id,
     bookName,
+    bookCategory,
     bookDescription,
     bookAuthor,
     numberOfPages,
@@ -148,6 +149,7 @@ function BookItem({ props, fetchData }) {
       </Modal>
       <div className={classes.bookitem}>
         <div className={classes.bookTitle}>{bookName}</div>
+        <div className={classes.bookCategory}>категория: {bookCategory}</div>
         <Image
           onClick={showModal}
           src={link}
@@ -163,6 +165,7 @@ function BookItem({ props, fetchData }) {
           <div className={classes.bookAuthor}>Автор: {bookAuthor}</div>
         )}
         <div className={classes.bookDescription}>{bookDescription}</div>
+
         {bookHolder ? (
           <div className={classes.notAvailable}>Книга на руках</div>
         ) : (

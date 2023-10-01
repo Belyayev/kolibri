@@ -12,6 +12,9 @@ import { StudentList } from "./StudentList";
 import { AddEventForm } from "./addEventForm";
 import { UpdateEventForm } from "./updateEventForm";
 import { EventList } from "./EventList";
+import { AddBookCategoryForm } from "./addBookCategoryForm";
+import { UpdateBookCategoryForm } from "./updateBookCategoryForm";
+import { BookCategoryList } from "./BookCategoryList";
 import { administrators } from "../../constants";
 
 function AdminPage() {
@@ -160,6 +163,48 @@ function AdminPage() {
     return data;
   }
 
+  async function addCategoryHandler(categoryData) {
+    const response = await fetch("/api/bookCategories/addBookCategory", {
+      method: "POST",
+      body: JSON.stringify(categoryData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+    setAlert(data.message);
+    return data;
+  }
+
+  async function updateCategoryHandler(categoryData) {
+    const response = await fetch("/api/bookCategories/updateBookCategory", {
+      method: "PATCH",
+      body: JSON.stringify(categoryData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+    setAlert(data.message);
+    return data;
+  }
+
+  async function deleteCategoryHandler(_id) {
+    const response = await fetch("/api/bookCategories/deleteBookCategory", {
+      method: "DELETE",
+      body: JSON.stringify({ _id: _id }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+    setAlert(data.message);
+    return data;
+  }
+
   const booksTabs = [
     {
       key: "1",
@@ -234,6 +279,29 @@ function AdminPage() {
     },
   ];
 
+  const categoriesTabs = [
+    {
+      key: "1",
+      label: `Добавить Категорию`,
+      children: <AddBookCategoryForm onAddCategory={addCategoryHandler} />,
+    },
+    {
+      key: "2",
+      label: `Редактировать`,
+      children: (
+        <UpdateBookCategoryForm
+          onUpdateCategory={updateCategoryHandler}
+          onDeleteCategory={deleteCategoryHandler}
+        />
+      ),
+    },
+    {
+      key: "3",
+      label: `Список`,
+      children: <BookCategoryList />,
+    },
+  ];
+
   return (
     <div className={classes.adminPage}>
       {alert && notification.open({ placement: "topLeft", message: alert })}
@@ -241,6 +309,11 @@ function AdminPage() {
       <Tabs className={classes.tab} defaultActiveKey="1" items={booksTabs} />
       <Tabs className={classes.tab} defaultActiveKey="1" items={studentsTabs} />
       <Tabs className={classes.tab} defaultActiveKey="1" items={eventsTabs} />
+      <Tabs
+        className={classes.tab}
+        defaultActiveKey="1"
+        items={categoriesTabs}
+      />
     </div>
   );
 }
