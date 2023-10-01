@@ -5,7 +5,7 @@ import classes from "./adminPage.module.css";
 
 export const BookCategoryList = () => {
   async function getBookCategories() {
-    const response = await fetch("/api/events/getBookCategories", {
+    const response = await fetch("/api/bookCategories/getBookCategories", {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -26,9 +26,7 @@ export const BookCategoryList = () => {
       {categories.map((category) => {
         return (
           <div key={category._id} className={classes.eventItem}>
-            <div className={classes.eventText}>
-              <div className={classes.eventTitle}>{category.BookCategory}</div>
-            </div>
+            <div>{category.bookCategory}</div>
           </div>
         );
       })}
