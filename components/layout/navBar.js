@@ -42,7 +42,9 @@ function NavBar() {
           {(user.primaryEmailAddress.emailAddress === "4xgood@gmail.com" ||
             user.primaryEmailAddress.emailAddress === "sachyk81@hotmail.com" ||
             user.primaryEmailAddress.emailAddress ===
-              "alina.yefanova@hotmail.com") && (
+              "alina.yefanova@hotmail.com" ||
+            user.primaryEmailAddress.emailAddress ===
+              "Lara_k79@hotmail.com") && (
             <Link passHref href="/admin">
               <div className={classes.navItem}>
                 <LockFilled className={classes.navIcon} />

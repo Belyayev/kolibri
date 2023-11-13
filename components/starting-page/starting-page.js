@@ -10,12 +10,18 @@ import icon02 from "../../Images/Icon02.png";
 import icon03 from "../../Images/Icon03.png";
 import icon04 from "../../Images/Icon04.png";
 import icon05 from "../../Images/Icon05.png";
-import photo01 from "../../Images/Photo01.png";
-import photo02 from "../../Images/Photo02.png";
-import photo03 from "../../Images/Photo03.png";
-import photo04 from "../../Images/Photo04.png";
-import photo05 from "../../Images/Photo05.png";
-import photo06 from "../../Images/Photo06.png";
+import photo01 from "../../Images/Carousel/Photo01.png";
+import photo02 from "../../Images/Carousel/Photo02.png";
+import photo03 from "../../Images/Carousel/Photo03.png";
+import photo04 from "../../Images/Carousel/Photo04.png";
+import photo05 from "../../Images/Carousel/Photo05.png";
+import photo06 from "../../Images/Carousel/Photo06.png";
+import photo07 from "../../Images/Carousel/Photo07.png";
+import photo08 from "../../Images/Carousel/Photo08.png";
+import photo09 from "../../Images/Carousel/Photo09.png";
+import photo10 from "../../Images/Carousel/Photo10.png";
+import photo11 from "../../Images/Carousel/Photo11.png";
+import photo12 from "../../Images/Carousel/Photo12.png";
 
 function StartingPageContent() {
   async function getEvents() {
@@ -90,6 +96,60 @@ function StartingPageContent() {
         />
         <Image
           src={photo06}
+          alt=""
+          title=""
+          width="100%"
+          height="35rem"
+          layout="responsive"
+          objectFit="contain"
+        />
+        <Image
+          src={photo07}
+          alt=""
+          title=""
+          width="100%"
+          height="35rem"
+          layout="responsive"
+          objectFit="contain"
+        />
+        <Image
+          src={photo08}
+          alt=""
+          title=""
+          width="100%"
+          height="35rem"
+          layout="responsive"
+          objectFit="contain"
+        />
+        <Image
+          src={photo09}
+          alt=""
+          title=""
+          width="100%"
+          height="35rem"
+          layout="responsive"
+          objectFit="contain"
+        />
+        <Image
+          src={photo10}
+          alt=""
+          title=""
+          width="100%"
+          height="35rem"
+          layout="responsive"
+          objectFit="contain"
+        />
+        <Image
+          src={photo11}
+          alt=""
+          title=""
+          width="100%"
+          height="35rem"
+          layout="responsive"
+          objectFit="contain"
+        />
+        <Image
+          src={photo12}
           alt=""
           title=""
           width="100%"
