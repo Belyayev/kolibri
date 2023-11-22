@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button, notification } from "antd";
-import moment from "moment";
 import { useUser } from "@clerk/nextjs";
 import classes from "./adminPage.module.css";
 
@@ -10,8 +9,8 @@ export const BookToLend = ({ book, fetchData }) => {
   const { user } = useUser();
   const authUserEmail = user.primaryEmailAddress.emailAddress;
 
-  async function updateBookHandler(bookData) {
-    const response = await fetch("/api/books/updateBook", {
+  async function assignBookHandler(bookData) {
+    const response = await fetch("/api/books/assignBook", {
       method: "PATCH",
       body: JSON.stringify(bookData),
       headers: {
@@ -43,11 +42,9 @@ export const BookToLend = ({ book, fetchData }) => {
               </div>
               <Button
                 onClick={() =>
-                  updateBookHandler({
+                  assignBookHandler({
                     authUserEmail,
                     _id: book._id,
-                    bookName: book.bookName,
-                    dateBorrowed: moment().format("YYYY-MM-DD"),
                     bookHolder: email.requestedBy,
                   })
                 }
