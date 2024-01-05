@@ -5,6 +5,7 @@ import classes from "./adminPage.module.css";
 import { AddBookForm } from "./addBookForm";
 import { UpdateBookForm } from "./updateBookForm";
 import { LendBookForm } from "./lendBookForm";
+import { HandedBooks } from "./handedBooks";
 import { AddStudentForm } from "./addStudentForm";
 import { useUser } from "@clerk/nextjs";
 import { UpdateStudentForm } from "./updateStudentForm";
@@ -208,7 +209,7 @@ function AdminPage() {
   const booksTabs = [
     {
       key: "1",
-      label: `Добавить Книгу`,
+      label: `Добавить`,
       children: <AddBookForm onAddBook={addBookHandler} />,
     },
     {
@@ -223,13 +224,18 @@ function AdminPage() {
     },
     {
       key: "3",
-      label: `Запросы`,
+      label: `Запросили`,
       children: (
         <LendBookForm
           onUpdateBook={updateBookHandler}
           onDeleteBook={deleteBookHandler}
         />
       ),
+    },
+    {
+      key: "4",
+      label: `На Руках`,
+      children: <HandedBooks />,
     },
   ];
 
