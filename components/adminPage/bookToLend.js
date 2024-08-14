@@ -24,6 +24,21 @@ export const BookToLend = ({ book, fetchData }) => {
     return data;
   }
 
+  async function clearBookHandler(bookData) {
+    const response = await fetch("/api/books/clearBook", {
+      method: "PATCH",
+      body: JSON.stringify(bookData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+    setAlert(data.message);
+    fetchData();
+    return data;
+  }
+
   return (
     <div className={classes.bookToLendWrapper}>
       {alert && notification.open({ placement: "topLeft", message: alert })}
@@ -40,17 +55,31 @@ export const BookToLend = ({ book, fetchData }) => {
               <div>
                 [ {email.requestedDate} ] : {email.requestedBy}
               </div>
-              <Button
-                onClick={() =>
-                  assignBookHandler({
-                    authUserEmail,
-                    _id: book._id,
-                    bookHolder: email.requestedBy,
-                  })
-                }
-              >
-                Выдать
-              </Button>
+              <div>
+                <Button
+                  type="link"
+                  onClick={() =>
+                    clearBookHandler({
+                      authUserEmail,
+                      _id: book._id,
+                      clearUser: email.requestedBy,
+                    })
+                  }
+                >
+                  Очистить
+                </Button>
+                <Button
+                  onClick={() =>
+                    assignBookHandler({
+                      authUserEmail,
+                      _id: book._id,
+                      bookHolder: email.requestedBy,
+                    })
+                  }
+                >
+                  Выдать
+                </Button>
+              </div>
             </div>
           ))}
         </div>
